@@ -2,109 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Linea E-commerce Design System - Minimalist & Modern */
+/* Shepit Ceramics — Artisan Ukrainian Ceramic Jewelry */
 
 @layer base {
   :root {
-    /* Core neutral palette */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
-    
-    /* Status bar */
-    --status-bar: 0 0% 0%;
-    --status-bar-foreground: 0 0% 100%;
-    
-    /* Navigation */
-    --nav-background: 0 0% 100%;
-    --nav-foreground: 0 0% 20%;
-    --nav-hover: 0 0% 5%;
-    
-    /* Interactive elements */
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 0 0% 15%;
-    
-    /* Subtle elements */
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 20%;
-    
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
-    
-    --accent: 0 0% 96%;
-    --accent-foreground: 0 0% 9%;
-    
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 9%;
-    
-    /* Cards and surfaces */
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
-    
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
-    
+    /* Cream/off-white background with warm undertone */
+    --background: 40 33% 96%;
+    --foreground: 20 12% 16%;
+
+    /* Deep terracotta red — primary brand color */
+    --primary: 14 52% 42%;
+    --primary-foreground: 40 33% 96%;
+    --primary-hover: 14 52% 35%;
+
+    /* Forest green — accent / secondary */
+    --secondary: 152 32% 28%;
+    --secondary-foreground: 40 33% 96%;
+
+    /* Muted earth tones */
+    --muted: 36 20% 90%;
+    --muted-foreground: 20 8% 48%;
+
+    /* Accent — warm terracotta lighter */
+    --accent: 20 40% 88%;
+    --accent-foreground: 20 12% 16%;
+
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 14 52% 42%;
+
+    --card: 40 30% 98%;
+    --card-foreground: 20 12% 16%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 20 12% 16%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    
-    --radius: 0.375rem;
-    
-    /* Transitions */
-    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --sidebar-background: 0 0% 98%;
+    --radius: 0.25rem;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 40 33% 96%;
+    --sidebar-foreground: 20 12% 16%;
+    --sidebar-primary: 14 52% 42%;
+    --sidebar-primary-foreground: 40 33% 96%;
+    --sidebar-accent: 20 40% 88%;
+    --sidebar-accent-foreground: 20 12% 16%;
+    --sidebar-border: 30 15% 85%;
+    --sidebar-ring: 14 52% 42%;
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
-    
-    --status-bar: 0 0% 0%;
-    --status-bar-foreground: 0 0% 100%;
-    
-    --nav-background: 0 0% 9%;
-    --nav-foreground: 0 0% 80%;
-    --nav-hover: 0 0% 95%;
-    
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --primary-hover: 0 0% 90%;
-    
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 80%;
-    
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
-    
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 98%;
-    
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 98%;
-    
-    --card: 0 0% 9%;
-    --card-foreground: 0 0% 98%;
-    
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
-    
+    --background: 20 12% 10%;
+    --foreground: 40 20% 90%;
+
+    --primary: 14 52% 55%;
+    --primary-foreground: 20 12% 10%;
+    --primary-hover: 14 52% 48%;
+
+    --secondary: 152 28% 38%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 20 10% 18%;
+    --muted-foreground: 30 10% 58%;
+
+    --accent: 20 25% 22%;
+    --accent-foreground: 40 20% 90%;
+
+    --border: 20 10% 22%;
+    --input: 20 10% 22%;
+    --ring: 14 52% 55%;
+
+    --card: 20 12% 12%;
+    --card-foreground: 40 20% 90%;
+
+    --popover: 20 12% 12%;
+    --popover-foreground: 40 20% 90%;
+
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
   }
@@ -116,6 +92,18 @@
   }
 
   body {
-    @apply bg-background text-foreground font-light;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Smooth scroll-triggered fade-in animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
