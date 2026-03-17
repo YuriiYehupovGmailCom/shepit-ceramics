@@ -49,7 +49,7 @@ const HeroSection = () => {
       <div className="relative overflow-hidden order-1 lg:order-2 h-[60vh] lg:h-auto">
         <img
           src={heroImage}
-          alt="Terracotta ceramic pendant on green cord — Shepit Ceramics"
+          alt="Керамічні сережки з українським орнаментом на темному тлі — Shepit Ceramics"
           className="w-full h-full object-cover"
           loading="eager"
         />
