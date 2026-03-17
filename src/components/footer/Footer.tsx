@@ -1,89 +1,131 @@
+/**
+ * Footer — Simple footer with links, Instagram handle, and newsletter signup.
+ */
+
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Instagram, Send } from "lucide-react";
+
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, this would call an API
+    alert(`Дякуємо! ${email} subscribed.`);
+    setEmail("");
+  };
+
   return (
-    <footer className="w-full bg-white text-black pt-8 pb-2 px-6 border-t border-[#e5e5e5] mt-48">
-      <div className="">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
-          {/* Brand - Left side */}
+    <footer className="border-t border-border bg-background">
+      <div className="max-w-7xl mx-auto px-6 md:px-16 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* Brand */}
           <div>
-            <img 
-              src="/Linea_Jewelry_Inc-2.svg" 
-              alt="Linea Jewelry Inc." 
-              className="mb-4 h-6 w-auto"
-            />
-            <p className="text-sm font-light text-black/70 leading-relaxed max-w-md mb-6">
-              Minimalist jewelry crafted for the modern individual
+            <h3 className="font-serif text-lg tracking-widest uppercase text-foreground mb-4">
+              Shepit
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Artisan ceramic jewelry rooted in Ukrainian craft tradition. Each
+              piece is shaped by hand, glazed with earth-born pigments, and fired
+              with intention.
             </p>
-            
-            {/* Contact Information */}
-            <div className="space-y-2 text-sm font-light text-black/70">
-              <div>
-                <p className="font-normal text-black mb-1">Visit Us</p>
-                <p>123 Madison Avenue</p>
-                <p>New York, NY 10016</p>
-              </div>
-              <div>
-                <p className="font-normal text-black mb-1 mt-3">Contact</p>
-                <p>+1 (212) 555-0123</p>
-                <p>hello@lineajewelry.com</p>
-              </div>
+            <a
+              href="https://instagram.com/shepit.ceramics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Instagram size={16} />
+              @shepit.ceramics
+            </a>
+          </div>
+
+          {/* Links */}
+          <div className="grid grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-xs tracking-[0.2em] uppercase text-foreground mb-4">
+                Shop
+              </h4>
+              <ul className="space-y-2">
+                {["Earrings", "Pendants", "Brooches", "Bracelets"].map((item) => (
+                  <li key={item}>
+                    <Link
+                      to="/collection"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-xs tracking-[0.2em] uppercase text-foreground mb-4">
+                Info
+              </h4>
+              <ul className="space-y-2">
+                {[
+                  { label: "About Us", href: "/about" },
+                  { label: "Care Guide", href: "/care" },
+                  { label: "Shipping", href: "/care" },
+                  { label: "Privacy", href: "/privacy-policy" },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Link lists - Right side */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Shop */}
-            <div>
-              <h4 className="text-sm font-normal mb-4">Shop</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">New In</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Rings</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Earrings</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Bracelets</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Necklaces</a></li>
-              </ul>
-            </div>
-
-            {/* Support */}
-            <div>
-              <h4 className="text-sm font-normal mb-4">Support</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Size Guide</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Care Instructions</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Returns</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Shipping</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div>
-              <h4 className="text-sm font-normal mb-4">Connect</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Instagram</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Pinterest</a></li>
-                <li><a href="#" className="text-sm font-light text-black/70 hover:text-black transition-colors">Newsletter</a></li>
-              </ul>
-            </div>
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-foreground mb-4">
+              Newsletter
+            </h4>
+            <p className="text-sm text-muted-foreground mb-4">
+              New pieces, studio stories, and early access to collections.
+            </p>
+            <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="flex-1 bg-transparent border border-border rounded-sm px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
+              />
+              <button
+                type="submit"
+                className="p-2 bg-primary text-primary-foreground rounded-sm hover:bg-primary-hover transition-colors"
+                aria-label="Subscribe"
+              >
+                <Send size={16} />
+              </button>
+            </form>
           </div>
         </div>
       </div>
 
-      {/* Bottom section - edge to edge separator */}
-      <div className="border-t border-[#e5e5e5] -mx-6 px-6 pt-2">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm font-light text-black mb-1 md:mb-0">
-            © 2024 Linea. All rights reserved. Template made by{" "}
-            <a href="https://www.liljeros.co" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors underline">
-              Rickard Liljeros
-            </a>
+      {/* Bottom bar */}
+      <div className="border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+          <p className="text-xs text-muted-foreground">
+            © 2025 Shepit Ceramics. Handmade in Kyiv, Ukraine.
           </p>
-          <div className="flex space-x-6">
-            <a href="/privacy-policy" className="text-sm font-light text-black hover:text-black/70 transition-colors">
+          <div className="flex gap-4">
+            <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
-            </a>
-            <a href="/terms-of-service" className="text-sm font-light text-black hover:text-black/70 transition-colors">
+            </Link>
+            <Link to="/terms-of-service" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
