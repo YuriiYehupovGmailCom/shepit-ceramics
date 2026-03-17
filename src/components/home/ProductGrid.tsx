@@ -1,7 +1,6 @@
 /**
  * ProductGrid — Displays product cards in a responsive grid.
  * 2 columns on mobile, 3 on tablet, 4 on desktop.
- * Each card links to the product detail page.
  */
 
 import { Link } from "react-router-dom";
@@ -15,10 +14,10 @@ const ProductGrid = () => {
     <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
       <div ref={fadeRef} className="fade-up">
         <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-2">
-          Our Collection
+          Наша колекція
         </h2>
         <p className="text-muted-foreground text-sm mb-10 max-w-lg">
-          Every piece is shaped, glazed, and fired by hand in our Kyiv studio.
+          Кожна прикраса вилеплена, вкрита глазур'ю та випалена вручну в нашій київській студії.
         </p>
       </div>
 
@@ -31,7 +30,6 @@ const ProductGrid = () => {
   );
 };
 
-// Individual product card with hover effect
 function ProductCard({ product }: { product: typeof products[number] }) {
   const fadeRef = useScrollFadeIn<HTMLAnchorElement>();
 
@@ -41,21 +39,18 @@ function ProductCard({ product }: { product: typeof products[number] }) {
       to={`/product/${product.slug}`}
       className="fade-up group block"
     >
-      {/* Image container with subtle zoom on hover */}
       <div className="aspect-square overflow-hidden bg-muted rounded-sm mb-3">
         <img
           src={product.image}
-          alt={product.name}
+          alt={product.nameUk}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
       </div>
 
-      {/* Product info */}
       <h3 className="font-serif text-sm md:text-base font-medium text-foreground group-hover:text-primary transition-colors">
-        {product.name}
+        {product.nameUk}
       </h3>
-      <p className="text-xs text-muted-foreground mt-0.5">{product.nameUk}</p>
       <p className="text-sm font-medium text-foreground mt-1">
         {product.price} {product.currency}
       </p>

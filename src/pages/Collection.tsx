@@ -10,7 +10,13 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import { products } from "@/data/products";
 
-const categories = ["all", "earrings", "pendants", "brooches", "bracelets"] as const;
+const categories = [
+  { key: "all", label: "Усі" },
+  { key: "earrings", label: "Сережки" },
+  { key: "pendants", label: "Кулони" },
+  { key: "brooches", label: "Брошки" },
+  { key: "bracelets", label: "Браслети" },
+] as const;
 
 const Collection = () => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -29,10 +35,10 @@ const Collection = () => {
       <main className="max-w-7xl mx-auto px-6 md:px-16 py-12">
         <div ref={fadeRef} className="fade-up mb-10">
           <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-2">
-            Collection
+            Колекція
           </h1>
           <p className="text-muted-foreground max-w-lg">
-            Browse our full range of handcrafted ceramic jewelry.
+            Перегляньте повний асортимент керамічних прикрас ручної роботи.
           </p>
         </div>
 
@@ -40,15 +46,15 @@ const Collection = () => {
         <div className="flex flex-wrap gap-2 mb-10">
           {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-1.5 text-sm rounded-sm border transition-colors capitalize ${
-                activeCategory === cat
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className={`px-4 py-1.5 text-sm rounded-sm border transition-colors ${
+                activeCategory === cat.key
                   ? "bg-primary text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
@@ -64,15 +70,14 @@ const Collection = () => {
               <div className="aspect-square overflow-hidden bg-muted rounded-sm mb-3">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.nameUk}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
               <h3 className="font-serif text-sm md:text-base font-medium text-foreground group-hover:text-primary transition-colors">
-                {product.name}
+                {product.nameUk}
               </h3>
-              <p className="text-xs text-muted-foreground mt-0.5">{product.nameUk}</p>
               <p className="text-sm font-medium text-foreground mt-1">
                 {product.price} {product.currency}
               </p>
