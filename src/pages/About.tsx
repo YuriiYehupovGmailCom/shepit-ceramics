@@ -21,19 +21,19 @@ const About = () => {
       <main className="max-w-5xl mx-auto px-6 md:px-16 py-16">
         <div ref={heroRef} className="fade-up mb-16">
           <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-            About Shepit
+            Про Shepit
           </h1>
           <p className="text-muted-foreground max-w-2xl leading-relaxed">
-            "Shepit" means <em>whisper</em> in Ukrainian. We create ceramic jewelry
-            that carries the quiet voice of the maker — each curve, each glaze
-            variation is a signature of the human hand.
+            «Шепіт» — це тихий голос майстрині. Ми створюємо керамічні прикраси,
+            які несуть у собі тепло рук — кожен вигин, кожна варіація глазурі є
+            підписом людської руки.
           </p>
         </div>
 
         <div className="aspect-[16/9] overflow-hidden rounded-sm mb-16">
           <img
             src={collectionImage}
-            alt="Our ceramic jewelry collection"
+            alt="Наша колекція керамічних прикрас"
             className="w-full h-full object-cover"
           />
         </div>
@@ -41,23 +41,24 @@ const About = () => {
         <div ref={storyRef} className="fade-up grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
             <h2 className="font-serif text-2xl font-light text-foreground mb-4">
-              Our Studio
+              Наша студія
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Based in Kyiv, Ukraine, our small studio is where tradition meets
-              intention. We work with local stoneware clay, sourced from Ukrainian
-              deposits, and fire each piece at temperatures exceeding 1200°C.
+              Розташована в Києві, Україна, наша невелика студія — це місце, де
+              традиція зустрічається з наміром. Ми працюємо з місцевою кам'яною
+              глиною, видобутою з українських родовищ, і випалюємо кожну
+              прикрасу за температури понад 1200°C.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Our glazes are made from earth-born pigments — iron, copper, cobalt —
-              mixed in small batches. The result is color that feels alive, never
-              synthetic.
+              Наші глазурі створені з натуральних пігментів — заліза, міді, кобальту —
+              змішаних у малих партіях. Результат — колір, що виглядає живим,
+              ніколи штучним.
             </p>
           </div>
           <div className="aspect-[3/4] overflow-hidden rounded-sm">
             <img
               src={artisanImage}
-              alt="Artisan at work in our Kyiv studio"
+              alt="Майстриня за роботою в нашій київській студії"
               className="w-full h-full object-cover"
             />
           </div>
@@ -65,20 +66,20 @@ const About = () => {
 
         <div className="max-w-2xl">
           <h2 className="font-serif text-2xl font-light text-foreground mb-4">
-            Our Values
+            Наші цінності
           </h2>
           <ul className="space-y-3 text-muted-foreground leading-relaxed">
             <li>
-              <strong className="text-foreground">Handmade, not mass-produced.</strong> Every
-              piece is shaped individually. We never use molds.
+              <strong className="text-foreground">Ручна робота, а не масове виробництво.</strong>{" "}
+              Кожна прикраса формується індивідуально. Ми ніколи не використовуємо форми.
             </li>
             <li>
-              <strong className="text-foreground">Sustainably sourced.</strong> Local clay,
-              natural glazes, minimal packaging using recycled paper.
+              <strong className="text-foreground">Екологічні матеріали.</strong>{" "}
+              Місцева глина, натуральні глазурі, мінімальне пакування з переробленого паперу.
             </li>
             <li>
-              <strong className="text-foreground">Cultural preservation.</strong> Our designs
-              honor traditional Ukrainian ceramic motifs while embracing modern form.
+              <strong className="text-foreground">Збереження культури.</strong>{" "}
+              Наші дизайни вшановують традиційні українські керамічні мотиви, водночас приймаючи сучасну форму.
             </li>
           </ul>
         </div>

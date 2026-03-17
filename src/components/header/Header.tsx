@@ -13,9 +13,9 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Collection", href: "/collection" },
-    { label: "About Us", href: "/about" },
-    { label: "Care Guide", href: "/care" },
+    { label: "Колекція", href: "/collection" },
+    { label: "Про нас", href: "/about" },
+    { label: "Догляд", href: "/care" },
   ];
 
   return (
@@ -25,7 +25,7 @@ const Header = () => {
         <button
           className="lg:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label="Відкрити меню"
         >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -55,7 +55,7 @@ const Header = () => {
         <button
           onClick={toggleCartOpen}
           className="relative p-2 text-foreground hover:text-primary transition-colors"
-          aria-label="Shopping bag"
+          aria-label="Кошик"
         >
           <ShoppingBag size={20} strokeWidth={1.5} />
           {totalItems > 0 && (

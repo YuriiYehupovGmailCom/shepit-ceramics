@@ -16,28 +16,30 @@ const AboutCraft = () => {
         {/* Text — takes 3 of 5 columns */}
         <div ref={textRef} className="fade-up lg:col-span-3 order-2 lg:order-1">
           <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            About the Craft
+            Про ремесло
           </p>
           <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-6 leading-tight">
-            "Shepit" means <em className="italic">whisper</em> in Ukrainian
+            «Шепіт» — це тихий голос
+            <br />
+            <em className="italic">майстрині у кожній прикрасі</em>
           </h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
-              Our studio sits in the heart of Kyiv, where centuries of ceramic
-              tradition meet contemporary design. Each piece begins as a lump of
-              Ukrainian stoneware clay — shaped by hand, dried in the sun, glazed
-              with earth-born pigments, and fired at over 1200°C.
+              Наша студія розташована в серці Києва, де багатовікова керамічна
+              традиція зустрічається з сучасним дизайном. Кожна прикраса починається
+              як грудочка української каменеподібної глини — вилеплена руками,
+              висушена на сонці, вкрита глазур'ю з натуральних пігментів
+              і випалена за температури понад 1200°C.
             </p>
             <p>
-              We believe jewelry should carry a story. The slight imperfections in
-              our glazes, the organic curves of each form — these are not flaws.
-              They are the whisper of the maker's hand, a quiet signature that
-              connects you to the earth and to our craft.
+              Ми віримо, що прикраси мають нести історію. Легкі недосконалості
+              глазурі, органічні вигини форми — це не вади. Це шепіт руки
+              майстрині, тиха ознака, що з'єднує вас із землею та нашим ремеслом.
             </p>
             <p>
-              Every purchase supports independent Ukrainian artisans and helps
-              preserve traditional ceramic techniques that have been passed down
-              for generations.
+              Кожна покупка підтримує незалежних українських ремісників і допомагає
+              зберегти традиційні керамічні техніки, що передаються з покоління
+              в покоління.
             </p>
           </div>
         </div>
@@ -50,7 +52,7 @@ const AboutCraft = () => {
           <div className="aspect-[3/4] overflow-hidden rounded-sm">
             <img
               src={artisanImage}
-              alt="Artisan shaping ceramic jewelry in our Kyiv studio"
+              alt="Майстриня створює керамічні прикраси в нашій київській студії"
               className="w-full h-full object-cover"
               loading="lazy"
             />

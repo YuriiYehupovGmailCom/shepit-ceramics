@@ -1,7 +1,6 @@
 /**
  * Product data for Shepit Ceramics.
  * In a real app, this would come from a database/CMS.
- * Each product has a unique slug used for routing.
  */
 
 import productEarring1 from "@/assets/product-earring-1.jpg";
@@ -15,14 +14,17 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
-  nameUk: string; // Ukrainian name
+  nameUk: string;
   price: number;
   currency: string;
   category: "earrings" | "pendants" | "brooches" | "bracelets";
+  categoryUk: string;
   image: string;
   images: string[];
   description: string;
+  descriptionUk: string;
   details: string[];
+  detailsUk: string[];
   inStock: boolean;
 }
 
@@ -33,18 +35,28 @@ export const products: Product[] = [
     name: "Terracotta Arc Earrings",
     nameUk: "Сережки «Терракотова Арка»",
     price: 1450,
-    currency: "UAH",
+    currency: "₴",
     category: "earrings",
+    categoryUk: "Сережки",
     image: productEarring1,
     images: [productEarring1],
     description:
       "Hand-shaped terracotta earrings with an organic curved form. Each pair is unique — slight variations in glaze and texture are a hallmark of the handmade process.",
+    descriptionUk:
+      "Терракотові сережки ручної роботи з органічною вигнутою формою. Кожна пара унікальна — легкі відмінності глазурі та текстури є ознакою ручної роботи.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Natural terracotta with matte finish",
       "Hooks: Hypoallergenic gold-plated brass",
       "Size: approx. 3.5 × 2.5 cm",
       "Weight: 8g per earring",
+    ],
+    detailsUk: [
+      "Матеріал: високотемпературна кам'яна глина",
+      "Глазур: натуральна терракота з матовим покриттям",
+      "Швензи: гіпоалергенна латунь із золотим покриттям",
+      "Розмір: прибл. 3,5 × 2,5 см",
+      "Вага: 8 г кожна сережка",
     ],
     inStock: true,
   },
@@ -54,17 +66,26 @@ export const products: Product[] = [
     name: "Forest Pendant Necklace",
     nameUk: "Кулон «Лісовий»",
     price: 1850,
-    currency: "UAH",
+    currency: "₴",
     category: "pendants",
+    categoryUk: "Кулони",
     image: productPendant1,
     images: [productPendant1],
     description:
       "An organic-shaped ceramic pendant with a rich forest green glaze on a hand-braided cord. Inspired by the ancient forests of the Carpathian mountains.",
+    descriptionUk:
+      "Керамічний кулон органічної форми з насиченою зеленою глазур'ю на плетеному шнурі. Натхненний стародавніми лісами Карпатських гір.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Forest green with amber undertones",
       "Cord: Hand-braided cotton, adjustable length",
       "Pendant size: approx. 3 × 2.5 cm",
+    ],
+    detailsUk: [
+      "Матеріал: високотемпературна кам'яна глина",
+      "Глазур: лісова зелень із бурштиновими відтінками",
+      "Шнур: плетена бавовна, регульована довжина",
+      "Розмір кулона: прибл. 3 × 2,5 см",
     ],
     inStock: true,
   },
@@ -74,17 +95,26 @@ export const products: Product[] = [
     name: "Vyshyvanka Pattern Brooch",
     nameUk: "Брошка «Вишиванка»",
     price: 980,
-    currency: "UAH",
+    currency: "₴",
     category: "brooches",
+    categoryUk: "Брошки",
     image: productBrooch1,
     images: [productBrooch1],
     description:
       "A ceramic brooch featuring traditional Ukrainian vyshyvanka (embroidery) patterns pressed into clay. A wearable piece of cultural heritage.",
+    descriptionUk:
+      "Керамічна брошка з традиційними українськими вишиванковими візерунками, відтиснутими в глині. Носимий елемент культурної спадщини.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Natural terracotta on cream",
       "Pin: Stainless steel brooch pin",
       "Diameter: approx. 4 cm",
+    ],
+    detailsUk: [
+      "Матеріал: високотемпературна кам'яна глина",
+      "Глазур: натуральна терракота на кремовому тлі",
+      "Застібка: шпилька з нержавіючої сталі",
+      "Діаметр: прибл. 4 см",
     ],
     inStock: true,
   },
@@ -94,17 +124,26 @@ export const products: Product[] = [
     name: "Terracotta Bead Bracelet",
     nameUk: "Браслет «Глиняні Намистини»",
     price: 1200,
-    currency: "UAH",
+    currency: "₴",
     category: "bracelets",
+    categoryUk: "Браслети",
     image: productBracelet1,
     images: [productBracelet1],
     description:
       "Hand-rolled terracotta beads on a natural linen macramé cord with an adjustable sliding knot. Each bead carries the warmth of the kiln.",
+    descriptionUk:
+      "Терракотові намистини ручної роботи на лляному шнурі макраме з регульованим вузлом. Кожна намистина зберігає тепло печі.",
     details: [
       "Material: High-fire terracotta beads",
       "Cord: Natural linen, adjustable",
       "Bead size: approx. 10mm each",
       "Fits wrists 15–20 cm",
+    ],
+    detailsUk: [
+      "Матеріал: високотемпературні терракотові намистини",
+      "Шнур: натуральний льон, регульований",
+      "Розмір намистин: прибл. 10 мм кожна",
+      "Підходить для зап'ясть 15–20 см",
     ],
     inStock: true,
   },
@@ -114,18 +153,28 @@ export const products: Product[] = [
     name: "Earth Stone Studs",
     nameUk: "Пусети «Земляний Камінь»",
     price: 780,
-    currency: "UAH",
+    currency: "₴",
     category: "earrings",
+    categoryUk: "Сережки",
     image: productEarring2,
     images: [productEarring2],
     description:
       "Minimal ceramic stud earrings in a duo of sage green and terracotta. Perfect for everyday wear — light, subtle, and grounding.",
+    descriptionUk:
+      "Мінімалістичні керамічні пусети у дуеті шавлієвого зеленого та терракоти. Ідеальні для щоденного носіння — легкі, витончені, заземлюючі.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Sage green + terracotta duo",
       "Posts: Surgical steel",
       "Size: approx. 1.2 cm",
       "Weight: 3g per earring",
+    ],
+    detailsUk: [
+      "Матеріал: високотемпературна кам'яна глина",
+      "Глазур: шавлієвий зелений + терракота",
+      "Штифти: хірургічна сталь",
+      "Розмір: прибл. 1,2 см",
+      "Вага: 3 г кожна сережка",
     ],
     inStock: true,
   },
@@ -135,30 +184,33 @@ export const products: Product[] = [
     name: "Midnight Teardrop Pendant",
     nameUk: "Кулон «Опівнічна Крапля»",
     price: 2100,
-    currency: "UAH",
+    currency: "₴",
     category: "pendants",
+    categoryUk: "Кулони",
     image: productPendant2,
     images: [productPendant2],
     description:
       "A dramatic teardrop pendant with a deep brown glaze kissed with gold leaf accents. The organic shape evokes falling rain at midnight.",
+    descriptionUk:
+      "Вражаючий каплеподібний кулон із глибокою коричневою глазур'ю та акцентами сусального золота. Органічна форма нагадує краплі нічного дощу.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Dark brown with 24k gold leaf accents",
       "Cord: Genuine leather, adjustable",
       "Pendant size: approx. 5 × 2.5 cm",
     ],
+    detailsUk: [
+      "Матеріал: високотемпературна кам'яна глина",
+      "Глазур: темно-коричнева з акцентами сусального золота 24к",
+      "Шнур: натуральна шкіра, регульований",
+      "Розмір кулона: прибл. 5 × 2,5 см",
+    ],
     inStock: true,
   },
 ];
 
-/**
- * Helper to find a product by its URL slug.
- */
 export const getProductBySlug = (slug: string): Product | undefined =>
   products.find((p) => p.slug === slug);
 
-/**
- * Helper to get products filtered by category.
- */
 export const getProductsByCategory = (category: string): Product[] =>
   products.filter((p) => p.category === category);

@@ -20,24 +20,24 @@ const HeroSection = () => {
         className="fade-up flex flex-col justify-center px-8 md:px-16 lg:px-20 py-16 lg:py-0 order-2 lg:order-1"
       >
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">
-          Handcrafted in Ukraine
+          Ручна робота з України
         </p>
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] text-foreground mb-6">
-          Ceramic jewelry
+          Керамічні прикраси,
           <br />
-          <em className="font-light italic">shaped by hand,</em>
+          <em className="font-light italic">створені руками,</em>
           <br />
-          fired with intention
+          випалені з любов'ю
         </h1>
         <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
-          Each piece carries the warmth of the kiln and the spirit of Ukrainian
-          craft tradition. No two are alike — that's the beauty of Shepit.
+          Кожна прикраса зберігає тепло печі та дух української
+          ремісничої традиції. Жодні дві не однакові — у цьому краса Shepit.
         </p>
         <Link
           to="/collection"
           className="inline-flex items-center gap-2 text-sm tracking-wider uppercase text-primary hover:text-primary-hover transition-colors group"
         >
-          View Collection
+          Переглянути колекцію
           <ArrowRight
             size={16}
             className="group-hover:translate-x-1 transition-transform"

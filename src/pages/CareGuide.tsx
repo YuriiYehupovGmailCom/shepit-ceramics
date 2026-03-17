@@ -10,27 +10,27 @@ import { Droplets, Sun, Shield, Heart } from "lucide-react";
 const careItems = [
   {
     icon: Droplets,
-    title: "Avoid Prolonged Water Exposure",
+    title: "Уникайте тривалого контакту з водою",
     description:
-      "While our ceramics are high-fired and durable, we recommend removing jewelry before swimming, showering, or doing dishes.",
+      "Хоча наша кераміка високотемпературного випалу та міцна, ми рекомендуємо знімати прикраси перед плаванням, прийняттям душу чи миттям посуду.",
   },
   {
     icon: Sun,
-    title: "Store Away from Direct Sunlight",
+    title: "Зберігайте подалі від прямих сонячних променів",
     description:
-      "Keep your pieces in the provided linen pouch when not wearing them. Prolonged sun exposure can affect cord and leather elements.",
+      "Тримайте прикраси в лляному мішечку, який входить у комплект. Тривале перебування на сонці може вплинути на шнур та шкіряні елементи.",
   },
   {
     icon: Shield,
-    title: "Handle with Care",
+    title: "Поводьтеся обережно",
     description:
-      "Ceramic is strong but can chip if dropped on hard surfaces. Treat your piece as you would a favorite mug — with gentle respect.",
+      "Кераміка міцна, але може відколотися при падінні на тверду поверхню. Ставтеся до прикраси як до улюбленої чашки — з ніжною повагою.",
   },
   {
     icon: Heart,
-    title: "Embrace the Patina",
+    title: "Цінуйте патину часу",
     description:
-      "Over time, natural materials like leather and linen may develop a subtle patina. This is part of the jewelry's living character.",
+      "З часом натуральні матеріали, такі як шкіра та льон, можуть набути легкої патини. Це частина живого характеру прикраси.",
   },
 ];
 
@@ -42,11 +42,11 @@ const CareGuide = () => {
 
       <main className="max-w-3xl mx-auto px-6 md:px-16 py-16">
         <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-4">
-          Care Guide
+          Догляд за прикрасами
         </h1>
         <p className="text-muted-foreground mb-12 max-w-lg">
-          Your Shepit piece is made to last. Follow these simple guidelines to
-          keep it beautiful for years.
+          Ваша прикраса Shepit створена на роки. Дотримуйтесь цих простих
+          порад, щоб зберегти її красу надовго.
         </p>
 
         <div className="space-y-10">
