@@ -33,7 +33,7 @@ const ProductGrid = () => {
 
 // Individual product card with hover effect
 function ProductCard({ product }: { product: typeof products[number] }) {
-  const fadeRef = useScrollFadeIn();
+  const fadeRef = useScrollFadeIn<HTMLAnchorElement>();
 
   return (
     <Link
