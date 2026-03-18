@@ -24,6 +24,8 @@ import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 
 const NOVA_POSHTA_API_URL = "https://api.novaposhta.ua/v2.0/json/";
+const ORDER_NOTIFICATION_EMAIL = "yurii.yehupov@gmail.com";
+const ORDER_NOTIFICATION_ENDPOINT = `https://formsubmit.co/ajax/${ORDER_NOTIFICATION_EMAIL}`;
 
 type NovaPoshtaApiResponse<T> = {
   success: boolean;
@@ -60,6 +62,7 @@ const Checkout = () => {
   const [isLoadingCities, setIsLoadingCities] = useState(false);
   const [isLoadingWarehouses, setIsLoadingWarehouses] = useState(false);
   const [deliveryError, setDeliveryError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const [form, setForm] = useState({
     firstName: "",
@@ -236,10 +239,60 @@ const Checkout = () => {
     }
 
     setIsProcessing(true);
-    // Simulate order processing
-    await new Promise((r) => setTimeout(r, 1500));
-    clearCart();
-    navigate("/order-confirmation");
+    setSubmitError("");
+
+    const orderItems = items
+      .map((item, index) => {
+        const lineTotal = item.product.price * item.quantity;
+        return `${index + 1}. ${item.product.nameUk} — ${item.quantity} x ${item.product.price} ${item.product.currency} = ${lineTotal} ${item.product.currency}`;
+      })
+      .join("\n");
+
+    const payload = new FormData();
+    payload.append("_subject", `Нове замовлення Shepit Ceramics на ${totalPrice} ₴`);
+    payload.append("_template", "table");
+    payload.append("Ім'я", form.firstName);
+    payload.append("Прізвище", form.lastName);
+    payload.append("Телефон", form.phone);
+    payload.append("Email клієнта", form.email || "Не вказано");
+    payload.append("Місто", form.city);
+    payload.append("Місто Ref", form.cityRef);
+    payload.append("Відділення", form.address);
+    payload.append("Відділення Ref", form.warehouseRef);
+    payload.append("Номер відділення", form.postalCode || "Не визначено");
+    payload.append("Коментар", form.comment || "Без коментаря");
+    payload.append("Товари", orderItems);
+    payload.append("Кількість позицій", String(items.length));
+    payload.append("Сума замовлення", `${totalPrice} ₴`);
+    payload.append("Спосіб оплати", "Оплата при отриманні (накладений платіж)");
+    payload.append("Спосіб доставки", "Нова пошта");
+
+    if (form.email) {
+      payload.append("_replyto", form.email);
+    }
+
+    try {
+      const response = await fetch(ORDER_NOTIFICATION_ENDPOINT, {
+        method: "POST",
+        body: payload,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.success !== "true") {
+        throw new Error("Не вдалося надіслати замовлення на пошту.");
+      }
+
+      clearCart();
+      navigate("/order-confirmation");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Не вдалося надіслати замовлення на пошту.");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   if (items.length === 0) {
@@ -501,6 +554,10 @@ const Checkout = () => {
                 >
                   {isProcessing ? "Обробка..." : "Підтвердити замовлення"}
                 </Button>
+
+                {submitError ? (
+                  <p className="mt-3 text-center text-sm text-destructive">{submitError}</p>
+                ) : null}
 
                 <p className="text-xs text-muted-foreground mt-3 text-center">
                   Оплата при отриманні (накладений платіж)
