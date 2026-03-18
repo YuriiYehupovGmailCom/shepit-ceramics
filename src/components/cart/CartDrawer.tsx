@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
 
 const CartDrawer = () => {
+  const navigate = useNavigate();
   const {
     items,
     isOpen,
