@@ -1,11 +1,16 @@
 /**
  * ProductDetail — Individual product page with image gallery, description,
  * and "Add to Bag" functionality.
+ *
+ * IMAGE GALLERY STATE:
+ * - `selectedImageIndex` tracks which image is shown in the main view.
+ * - Clicking a thumbnail updates this index instantly.
+ * - On mobile, touch swipe gestures cycle through images.
  */
 
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
-import { ArrowLeft, Plus, Minus } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+import { ArrowLeft, Plus, Minus, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -19,7 +24,39 @@ const ProductDetail = () => {
   const product = getProductBySlug(slug || "");
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+
+  // --- Image gallery state ---
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  // Navigate to next/previous image (wraps around)
+  const goToImage = useCallback(
+    (direction: 1 | -1) => {
+      if (!product) return;
+      setSelectedImageIndex((prev) =>
+        (prev + direction + product.images.length) % product.images.length
+      );
+    },
+    [product]
+  );
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      goToImage(diff > 0 ? 1 : -1);
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   if (!product) {
     return (
@@ -33,6 +70,8 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  const hasMultipleImages = product.images.length > 1;
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -56,33 +95,84 @@ const ProductDetail = () => {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Image gallery */}
+          {/* ===== IMAGE GALLERY ===== */}
           <div>
-            <div className="aspect-square overflow-hidden bg-muted rounded-sm mb-4">
+            {/* Main image with swipe support */}
+            <div
+              className="relative aspect-square overflow-hidden bg-muted rounded-sm mb-4 cursor-pointer group"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={product.images[selectedImageIndex]}
-                alt={product.nameUk}
-                className="w-full h-full object-cover"
+                alt={`${product.nameUk} — фото ${selectedImageIndex + 1}`}
+                className="w-full h-full object-cover transition-opacity duration-300"
               />
+
+              {/* Navigation arrows (visible on hover, desktop only) */}
+              {hasMultipleImages && (
+                <>
+                  <button
+                    onClick={() => goToImage(-1)}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-background/70 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                    aria-label="Попереднє фото"
+                  >
+                    <ChevronLeft size={18} className="text-foreground" />
+                  </button>
+                  <button
+                    onClick={() => goToImage(1)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-background/70 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+                    aria-label="Наступне фото"
+                  >
+                    <ChevronRight size={18} className="text-foreground" />
+                  </button>
+                </>
+              )}
+
+              {/* Mobile dots indicator */}
+              {hasMultipleImages && (
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 lg:hidden">
+                  {product.images.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        i === selectedImageIndex
+                          ? "bg-foreground"
+                          : "bg-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-            {product.images.length > 1 && (
+
+            {/* Thumbnail row — visible when multiple images exist */}
+            {hasMultipleImages && (
               <div className="flex gap-2">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImageIndex(i)}
-                    className={`w-16 h-16 overflow-hidden rounded-sm border-2 transition-colors ${
-                      i === selectedImageIndex ? "border-primary" : "border-transparent"
+                    className={`w-16 h-16 md:w-20 md:h-20 overflow-hidden rounded-sm border-2 transition-all ${
+                      i === selectedImageIndex
+                        ? "border-primary ring-1 ring-primary/30"
+                        : "border-transparent hover:border-muted-foreground/30"
                     }`}
+                    aria-label={`Фото ${i + 1}`}
                   >
-                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <img
+                      src={img}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
                   </button>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Product info */}
+          {/* ===== PRODUCT INFO ===== */}
           <div className="lg:sticky lg:top-24 lg:h-fit">
             <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-2">
               {product.categoryUk}
