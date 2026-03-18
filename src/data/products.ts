@@ -1,14 +1,13 @@
 /**
  * Product data for Shepit Ceramics.
- * In a real app, this would come from a database/CMS.
  */
 
-import productEarring1 from "@/assets/product-earring-1.jpg";
-import productEarring2 from "@/assets/product-earring-2.jpg";
-import productPendant1 from "@/assets/product-pendant-1.jpg";
+import chokerPendant from "@/assets/choker-pendant.png";
+import ptashkaPendant from "@/assets/ptashka-pendant.png";
+import ceramicEarringsGreen from "@/assets/ceramic-earrings-green.png";
 import productPendant2 from "@/assets/product-pendant-2.jpg";
-import productBrooch1 from "@/assets/product-brooch-1.jpg";
 import productBracelet1 from "@/assets/product-bracelet-1.jpg";
+import productEarring2 from "@/assets/product-earring-2.jpg";
 
 export interface Product {
   id: string;
@@ -31,90 +30,88 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "1",
-    slug: "terracotta-arc-earrings",
-    name: "Terracotta Arc Earrings",
-    nameUk: "Сережки «Терракотова Арка»",
-    price: 1450,
+    slug: "choker-ceramic-pendant",
+    name: "Choker with Ceramic Pendant",
+    nameUk: "Чокер з керамічною підвіскою і намистинами",
+    price: 600,
     currency: "₴",
-    category: "earrings",
-    categoryUk: "Сережки",
-    image: productEarring1,
-    images: [productEarring1],
+    category: "pendants",
+    categoryUk: "Кулони",
+    image: chokerPendant,
+    images: [chokerPendant],
     description:
-      "Hand-shaped terracotta earrings with an organic curved form. Each pair is unique — slight variations in glaze and texture are a hallmark of the handmade process.",
+      "A choker with a handmade ceramic pendant and beads. Copper fittings and memory wire base create a comfortable fit.",
     descriptionUk:
-      "Терракотові сережки ручної роботи з органічною вигнутою формою. Кожна пара унікальна — легкі відмінності глазурі та текстури є ознакою ручної роботи.",
+      "Чокер з керамічною підвіскою ручної роботи та намистинами. Мідна фурнітура, основа — дріт із пам'яттю.",
     details: [
-      "Material: High-fire stoneware clay",
-      "Glaze: Natural terracotta with matte finish",
-      "Hooks: Hypoallergenic gold-plated brass",
-      "Size: approx. 3.5 × 2.5 cm",
-      "Weight: 8g per earring",
+      "Material: Beige clay, milk-fired",
+      "Glaze: White and green",
+      "Fittings: Copper",
+      "Base: Memory wire",
+      "Circumference: 37 cm + 6 cm chain extender",
+      "Pendant size: 3.3 × 3.3 cm",
     ],
     detailsUk: [
-      "Матеріал: високотемпературна кам'яна глина",
-      "Глазур: натуральна терракота з матовим покриттям",
-      "Швензи: гіпоалергенна латунь із золотим покриттям",
-      "Розмір: прибл. 3,5 × 2,5 см",
-      "Вага: 8 г кожна сережка",
+      "Матеріал: бежева глина молочена",
+      "Полива: біла і зелена",
+      "Фурнітура: мідна",
+      "Основа: дріт із пам'яттю",
+      "Окружність: 37 см + 6 см ланцюжок подовжувач",
+      "Розмір керамічної підвіски: 3,3×3,3 см",
     ],
     inStock: true,
   },
   {
     id: "2",
-    slug: "forest-pendant-necklace",
-    name: "Forest Pendant Necklace",
-    nameUk: "Кулон «Лісовий»",
-    price: 1850,
+    slug: "ptashka-ceramic-pendant",
+    name: "Ceramic Pendant «Ptashka»",
+    nameUk: "Керамічна підвіска «Пташка»",
+    price: 300,
     currency: "₴",
     category: "pendants",
     categoryUk: "Кулони",
-    image: productPendant1,
-    images: [productPendant1],
+    image: ptashkaPendant,
+    images: [ptashkaPendant],
     description:
-      "An organic-shaped ceramic pendant with a rich forest green glaze on a hand-braided cord. Inspired by the ancient forests of the Carpathian mountains.",
+      "A ceramic pendant shaped like a bird — «Ptashka». Made from beige clay with black and transparent glaze.",
     descriptionUk:
-      "Керамічний кулон органічної форми з насиченою зеленою глазур'ю на плетеному шнурі. Натхненний стародавніми лісами Карпатських гір.",
+      "Керамічна підвіска у формі пташки. Виготовлена з бежевої глини з чорною і прозорою поливами.",
     details: [
-      "Material: High-fire stoneware clay",
-      "Glaze: Forest green with amber undertones",
-      "Cord: Hand-braided cotton, adjustable length",
-      "Pendant size: approx. 3 × 2.5 cm",
+      "Material: Beige clay",
+      "Glaze: Black and transparent",
+      "Size: 3.4 × 3.6 cm",
     ],
     detailsUk: [
-      "Матеріал: високотемпературна кам'яна глина",
-      "Глазур: лісова зелень із бурштиновими відтінками",
-      "Шнур: плетена бавовна, регульована довжина",
-      "Розмір кулона: прибл. 3 × 2,5 см",
+      "Матеріал: бежева глина",
+      "Полива: чорна і прозора",
+      "Розмір: 3,4×3,6 см",
     ],
     inStock: true,
   },
   {
     id: "3",
-    slug: "vyshyvanka-brooch",
-    name: "Vyshyvanka Pattern Brooch",
-    nameUk: "Брошка «Вишиванка»",
-    price: 980,
+    slug: "ceramic-earrings-green",
+    name: "Ceramic Earrings",
+    nameUk: "Керамічні сережки",
+    price: 350,
     currency: "₴",
-    category: "brooches",
-    categoryUk: "Брошки",
-    image: productBrooch1,
-    images: [productBrooch1],
+    category: "earrings",
+    categoryUk: "Сережки",
+    image: ceramicEarringsGreen,
+    images: [ceramicEarringsGreen],
     description:
-      "A ceramic brooch featuring traditional Ukrainian vyshyvanka (embroidery) patterns pressed into clay. A wearable piece of cultural heritage.",
+      "Round ceramic earrings with geometric patterns in green and white glaze on beige clay.",
     descriptionUk:
-      "Керамічна брошка з традиційними українськими вишиванковими візерунками, відтиснутими в глині. Носимий елемент культурної спадщини.",
+      "Круглі керамічні сережки з геометричним орнаментом. Біла і зелена поливи на бежевій глині молоченій.",
     details: [
-      "Material: High-fire stoneware clay",
-      "Glaze: Natural terracotta on cream",
-      "Pin: Stainless steel brooch pin",
-      "Diameter: approx. 4 cm",
+      "Material: Beige clay, milk-fired",
+      "Glaze: White and green",
+      "Size: 3 × 3 cm",
     ],
     detailsUk: [
-      "Матеріал: високотемпературна кам'яна глина",
-      "Глазур: натуральна терракота на кремовому тлі",
-      "Застібка: шпилька з нержавіючої сталі",
-      "Діаметр: прибл. 4 см",
+      "Матеріал: бежева глина молочена",
+      "Полива: біла і зелена",
+      "Розмір: 3×3 см",
     ],
     inStock: true,
   },
@@ -130,9 +127,9 @@ export const products: Product[] = [
     image: productBracelet1,
     images: [productBracelet1],
     description:
-      "Hand-rolled terracotta beads on a natural linen macramé cord with an adjustable sliding knot. Each bead carries the warmth of the kiln.",
+      "Hand-rolled terracotta beads on a natural linen macramé cord with an adjustable sliding knot.",
     descriptionUk:
-      "Терракотові намистини ручної роботи на лляному шнурі макраме з регульованим вузлом. Кожна намистина зберігає тепло печі.",
+      "Терракотові намистини ручної роботи на лляному шнурі макраме з регульованим вузлом.",
     details: [
       "Material: High-fire terracotta beads",
       "Cord: Natural linen, adjustable",
@@ -159,9 +156,9 @@ export const products: Product[] = [
     image: productEarring2,
     images: [productEarring2],
     description:
-      "Minimal ceramic stud earrings in a duo of sage green and terracotta. Perfect for everyday wear — light, subtle, and grounding.",
+      "Minimal ceramic stud earrings in sage green and terracotta. Light, subtle, and grounding.",
     descriptionUk:
-      "Мінімалістичні керамічні пусети у дуеті шавлієвого зеленого та терракоти. Ідеальні для щоденного носіння — легкі, витончені, заземлюючі.",
+      "Мінімалістичні керамічні пусети у дуеті шавлієвого зеленого та терракоти. Легкі, витончені, заземлюючі.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Sage green + terracotta duo",
@@ -190,9 +187,9 @@ export const products: Product[] = [
     image: productPendant2,
     images: [productPendant2],
     description:
-      "A dramatic teardrop pendant with a deep brown glaze kissed with gold leaf accents. The organic shape evokes falling rain at midnight.",
+      "A dramatic teardrop pendant with deep brown glaze and gold leaf accents.",
     descriptionUk:
-      "Вражаючий каплеподібний кулон із глибокою коричневою глазур'ю та акцентами сусального золота. Органічна форма нагадує краплі нічного дощу.",
+      "Вражаючий каплеподібний кулон із глибокою коричневою глазур'ю та акцентами сусального золота.",
     details: [
       "Material: High-fire stoneware clay",
       "Glaze: Dark brown with 24k gold leaf accents",
