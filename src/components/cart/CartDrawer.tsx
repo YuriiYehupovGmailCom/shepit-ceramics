@@ -3,6 +3,7 @@
  */
 
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import {
   Sheet,
   SheetContent,
@@ -14,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
 
 const CartDrawer = () => {
+  const navigate = useNavigate();
   const {
     items,
     isOpen,
@@ -93,7 +95,10 @@ const CartDrawer = () => {
                 <span className="font-medium">{totalPrice} ₴</span>
               </div>
               <Separator />
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider">
+              <Button
+                onClick={() => { setCartOpen(false); navigate("/checkout"); }}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider"
+              >
                 Оформити замовлення
               </Button>
               <p className="text-xs text-center text-muted-foreground">
