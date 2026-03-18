@@ -2,7 +2,6 @@
  * Product data for Shepit Ceramics.
  */
 
-import chokerPendant from "@/assets/choker-pendant.png";
 import chokerPhoto1 from "@/assets/choker-photo-1.png";
 import chokerPhoto2 from "@/assets/choker-photo-2.png";
 import ptashkaPendant from "@/assets/ptashka-pendant.png";
@@ -40,7 +39,7 @@ export const products: Product[] = [
     category: "pendants",
     categoryUk: "Кулони",
     image: chokerPhoto1,
-    images: [chokerPhoto1, chokerPhoto2, chokerPendant],
+    images: [chokerPhoto1, chokerPhoto2],
     description:
       "A choker with a handmade ceramic pendant and beads. Copper fittings and memory wire base create a comfortable fit.",
     descriptionUk:
