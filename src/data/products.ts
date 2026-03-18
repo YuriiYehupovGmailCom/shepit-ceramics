@@ -3,6 +3,8 @@
  */
 
 import chokerPendant from "@/assets/choker-pendant.png";
+import chokerPhoto1 from "@/assets/choker-photo-1.png";
+import chokerPhoto2 from "@/assets/choker-photo-2.png";
 import ptashkaPendant from "@/assets/ptashka-pendant.png";
 import ceramicEarringsGreen from "@/assets/ceramic-earrings-green.png";
 import productPendant2 from "@/assets/product-pendant-2.jpg";
