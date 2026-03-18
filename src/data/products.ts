@@ -39,8 +39,8 @@ export const products: Product[] = [
     currency: "₴",
     category: "pendants",
     categoryUk: "Кулони",
-    image: chokerPendant,
-    images: [chokerPendant],
+    image: chokerPhoto1,
+    images: [chokerPhoto1, chokerPhoto2, chokerPendant],
     description:
       "A choker with a handmade ceramic pendant and beads. Copper fittings and memory wire base create a comfortable fit.",
     descriptionUk:
