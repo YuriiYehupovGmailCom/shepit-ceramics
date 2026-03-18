@@ -2,21 +2,64 @@
  * Checkout — Order form page with cart summary, customer info, and shipping.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Minus, Plus, Trash2 } from "lucide-react";
+import { Check, ChevronsUpDown, LoaderCircle, Minus, Plus, Trash2 } from "lucide-react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
+import { cn } from "@/lib/utils";
+
+const NOVA_POSHTA_API_URL = "https://api.novaposhta.ua/v2.0/json/";
+
+type NovaPoshtaApiResponse<T> = {
+  success: boolean;
+  data: T[];
+  errors?: string[];
+};
+
+type NovaPoshtaCity = {
+  Ref: string;
+  Description: string;
+  AreaDescription?: string;
+  SettlementTypeDescription?: string;
+};
+
+type NovaPoshtaWarehouse = {
+  Ref: string;
+  Description: string;
+  Number?: string;
+  CategoryOfWarehouse?: string;
+};
 
 const Checkout = () => {
   const { items, updateQuantity, removeFromCart, totalPrice, clearCart } = useCart();
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [cityPopoverOpen, setCityPopoverOpen] = useState(false);
+  const [warehousePopoverOpen, setWarehousePopoverOpen] = useState(false);
+  const [cityQuery, setCityQuery] = useState("");
+  const [warehouseQuery, setWarehouseQuery] = useState("");
+  const [cityOptions, setCityOptions] = useState<NovaPoshtaCity[]>([]);
+  const [warehouseOptions, setWarehouseOptions] = useState<NovaPoshtaWarehouse[]>([]);
+  const [selectedCity, setSelectedCity] = useState<NovaPoshtaCity | null>(null);
+  const [selectedWarehouse, setSelectedWarehouse] = useState<NovaPoshtaWarehouse | null>(null);
+  const [isLoadingCities, setIsLoadingCities] = useState(false);
+  const [isLoadingWarehouses, setIsLoadingWarehouses] = useState(false);
+  const [deliveryError, setDeliveryError] = useState("");
 
   const [form, setForm] = useState({
     firstName: "",
@@ -25,6 +68,8 @@ const Checkout = () => {
     email: "",
     city: "",
     address: "",
+    cityRef: "",
+    warehouseRef: "",
     postalCode: "",
     comment: "",
   });
@@ -33,8 +78,163 @@ const Checkout = () => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  useEffect(() => {
+    const normalizedQuery = cityQuery.trim();
+
+    if (normalizedQuery.length < 2) {
+      setCityOptions([]);
+      setIsLoadingCities(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(async () => {
+      setIsLoadingCities(true);
+
+      try {
+        const response = await fetch(NOVA_POSHTA_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            apiKey: "",
+            modelName: "Address",
+            calledMethod: "getCities",
+            methodProperties: {
+              FindByString: normalizedQuery,
+              Limit: 20,
+            },
+          }),
+        });
+
+        const result: NovaPoshtaApiResponse<NovaPoshtaCity> = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.errors?.[0] || "Не вдалося завантажити список міст.");
+        }
+
+        setCityOptions(result.data);
+        setDeliveryError("");
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        setCityOptions([]);
+        setDeliveryError(error instanceof Error ? error.message : "Не вдалося завантажити список міст.");
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoadingCities(false);
+        }
+      }
+    }, 350);
+
+    return () => {
+      controller.abort();
+      window.clearTimeout(timeoutId);
+    };
+  }, [cityQuery]);
+
+  useEffect(() => {
+    if (!selectedCity?.Ref) {
+      setWarehouseOptions([]);
+      setIsLoadingWarehouses(false);
+      return;
+    }
+
+    const controller = new AbortController();
+
+    const loadWarehouses = async () => {
+      setIsLoadingWarehouses(true);
+
+      try {
+        const response = await fetch(NOVA_POSHTA_API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            apiKey: "",
+            modelName: "Address",
+            calledMethod: "getWarehouses",
+            methodProperties: {
+              CityRef: selectedCity.Ref,
+            },
+          }),
+        });
+
+        const result: NovaPoshtaApiResponse<NovaPoshtaWarehouse> = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.errors?.[0] || "Не вдалося завантажити список відділень.");
+        }
+
+        setWarehouseOptions(result.data);
+        setDeliveryError("");
+      } catch (error) {
+        if (controller.signal.aborted) {
+          return;
+        }
+
+        setWarehouseOptions([]);
+        setDeliveryError(error instanceof Error ? error.message : "Не вдалося завантажити список відділень.");
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoadingWarehouses(false);
+        }
+      }
+    };
+
+    loadWarehouses();
+
+    return () => controller.abort();
+  }, [selectedCity]);
+
+  const filteredWarehouses = warehouseOptions.filter((warehouse) =>
+    warehouse.Description.toLowerCase().includes(warehouseQuery.toLowerCase()),
+  );
+
+  const selectCity = (city: NovaPoshtaCity) => {
+    setSelectedCity(city);
+    setSelectedWarehouse(null);
+    setWarehouseQuery("");
+    setCityQuery(city.Description);
+    setWarehouseOptions([]);
+    setDeliveryError("");
+    setForm((prev) => ({
+      ...prev,
+      city: city.Description,
+      cityRef: city.Ref,
+      address: "",
+      warehouseRef: "",
+      postalCode: "",
+    }));
+    setCityPopoverOpen(false);
+  };
+
+  const selectWarehouse = (warehouse: NovaPoshtaWarehouse) => {
+    setSelectedWarehouse(warehouse);
+    setWarehouseQuery(warehouse.Description);
+    setDeliveryError("");
+    setForm((prev) => ({
+      ...prev,
+      address: warehouse.Description,
+      warehouseRef: warehouse.Ref,
+      postalCode: warehouse.Number || "",
+    }));
+    setWarehousePopoverOpen(false);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedCity || !selectedWarehouse) {
+      setDeliveryError("Оберіть місто та відділення Нової пошти.");
+      return;
+    }
+
     setIsProcessing(true);
     // Simulate order processing
     await new Promise((r) => setTimeout(r, 1500));
@@ -103,17 +303,134 @@ const Checkout = () => {
                 <h2 className="font-serif text-xl font-light text-foreground mb-4">Доставка</h2>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="city" className="text-sm text-foreground">Місто *</Label>
-                    <Input id="city" required value={form.city} onChange={(e) => handleChange("city", e.target.value)} className="mt-1 rounded-sm" placeholder="Ваше місто" />
+                    <Label className="text-sm text-foreground">Місто *</Label>
+                    <Popover open={cityPopoverOpen} onOpenChange={setCityPopoverOpen}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={cityPopoverOpen}
+                          className="mt-1 w-full justify-between rounded-sm font-normal"
+                        >
+                          <span className="truncate">
+                            {selectedCity ? selectedCity.Description : "Оберіть місто"}
+                          </span>
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
+                        <Command shouldFilter={false}>
+                          <CommandInput
+                            value={cityQuery}
+                            onValueChange={setCityQuery}
+                            placeholder="Почніть вводити назву міста"
+                          />
+                          <CommandList>
+                            {isLoadingCities ? (
+                              <div className="flex items-center gap-2 px-3 py-4 text-sm text-muted-foreground">
+                                <LoaderCircle className="h-4 w-4 animate-spin" />
+                                Завантаження міст...
+                              </div>
+                            ) : null}
+                            {!isLoadingCities && cityQuery.trim().length < 2 ? (
+                              <div className="px-3 py-4 text-sm text-muted-foreground">
+                                Введіть щонайменше 2 символи.
+                              </div>
+                            ) : null}
+                            <CommandEmpty>Місто не знайдено.</CommandEmpty>
+                            <CommandGroup>
+                              {cityOptions.map((city) => (
+                                <CommandItem
+                                  key={city.Ref}
+                                  value={city.Ref}
+                                  onSelect={() => selectCity(city)}
+                                  className="flex items-start gap-2"
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mt-0.5 h-4 w-4",
+                                      selectedCity?.Ref === city.Ref ? "opacity-100" : "opacity-0",
+                                    )}
+                                  />
+                                  <div className="min-w-0">
+                                    <div className="truncate">{city.Description}</div>
+                                    {(city.AreaDescription || city.SettlementTypeDescription) ? (
+                                      <div className="text-xs text-muted-foreground">
+                                        {[city.SettlementTypeDescription, city.AreaDescription].filter(Boolean).join(", ")}
+                                      </div>
+                                    ) : null}
+                                  </div>
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
                   </div>
                   <div>
-                    <Label htmlFor="address" className="text-sm text-foreground">Адреса або відділення Нової Пошти *</Label>
-                    <Input id="address" required value={form.address} onChange={(e) => handleChange("address", e.target.value)} className="mt-1 rounded-sm" placeholder="Відділення №..." />
+                    <Label className="text-sm text-foreground">Відділення Нової пошти *</Label>
+                    <Popover open={warehousePopoverOpen} onOpenChange={setWarehousePopoverOpen}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={warehousePopoverOpen}
+                          disabled={!selectedCity}
+                          className="mt-1 w-full justify-between rounded-sm font-normal"
+                        >
+                          <span className="truncate">
+                            {selectedWarehouse ? selectedWarehouse.Description : "Оберіть відділення"}
+                          </span>
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0" align="start">
+                        <Command shouldFilter={false}>
+                          <CommandInput
+                            value={warehouseQuery}
+                            onValueChange={setWarehouseQuery}
+                            placeholder={selectedCity ? "Пошук відділення" : "Спершу оберіть місто"}
+                          />
+                          <CommandList>
+                            {isLoadingWarehouses ? (
+                              <div className="flex items-center gap-2 px-3 py-4 text-sm text-muted-foreground">
+                                <LoaderCircle className="h-4 w-4 animate-spin" />
+                                Завантаження відділень...
+                              </div>
+                            ) : null}
+                            <CommandEmpty>Відділення не знайдено.</CommandEmpty>
+                            <CommandGroup>
+                              {filteredWarehouses.map((warehouse) => (
+                                <CommandItem
+                                  key={warehouse.Ref}
+                                  value={warehouse.Ref}
+                                  onSelect={() => selectWarehouse(warehouse)}
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mr-2 h-4 w-4",
+                                      selectedWarehouse?.Ref === warehouse.Ref ? "opacity-100" : "opacity-0",
+                                    )}
+                                  />
+                                  <span className="truncate">{warehouse.Description}</span>
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
                   </div>
                   <div>
-                    <Label htmlFor="postalCode" className="text-sm text-foreground">Поштовий індекс</Label>
-                    <Input id="postalCode" value={form.postalCode} onChange={(e) => handleChange("postalCode", e.target.value)} className="mt-1 rounded-sm" placeholder="01001" />
+                    <Label htmlFor="postalCode" className="text-sm text-foreground">Номер відділення</Label>
+                    <Input id="postalCode" value={form.postalCode} readOnly className="mt-1 rounded-sm bg-muted/40" placeholder="Буде підставлено автоматично" />
                   </div>
+                  {deliveryError ? (
+                    <p className="text-sm text-destructive">{deliveryError}</p>
+                  ) : null}
                 </div>
               </section>
 
