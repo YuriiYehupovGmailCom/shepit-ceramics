@@ -4,8 +4,9 @@
 
 import chokerPhoto1 from "@/assets/choker-photo-1.png";
 import chokerPhoto2 from "@/assets/choker-photo-2.png";
-import ptashkaPendant from "@/assets/ptashka-pendant.png";
-import ceramicEarringsGreen from "@/assets/ceramic-earrings-green.png";
+import ptashkaPhoto1 from "@/assets/ptashka-photo-1.png";
+import ptashkaPhoto2 from "@/assets/ptashka-photo-2.png";
+import earringsGreenPhoto from "@/assets/earrings-green-photo.png";
 import productPendant2 from "@/assets/product-pendant-2.jpg";
 import productBracelet1 from "@/assets/product-bracelet-1.jpg";
 import productEarring2 from "@/assets/product-earring-2.jpg";
@@ -71,8 +72,8 @@ export const products: Product[] = [
     currency: "₴",
     category: "pendants",
     categoryUk: "Кулони",
-    image: ptashkaPendant,
-    images: [ptashkaPendant],
+    image: ptashkaPhoto1,
+    images: [ptashkaPhoto1, ptashkaPhoto2],
     description:
       "A ceramic pendant shaped like a bird — «Ptashka». Made from beige clay with black and transparent glaze.",
     descriptionUk:
@@ -98,8 +99,8 @@ export const products: Product[] = [
     currency: "₴",
     category: "earrings",
     categoryUk: "Сережки",
-    image: ceramicEarringsGreen,
-    images: [ceramicEarringsGreen],
+    image: earringsGreenPhoto,
+    images: [earringsGreenPhoto],
     description:
       "Round ceramic earrings with geometric patterns in green and white glaze on beige clay.",
     descriptionUk:
