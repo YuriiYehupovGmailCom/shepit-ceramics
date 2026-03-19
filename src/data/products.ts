@@ -99,8 +99,8 @@ export const products: Product[] = [
     currency: "₴",
     category: "earrings",
     categoryUk: "Сережки",
-    image: ceramicEarringsGreen,
-    images: [ceramicEarringsGreen],
+    image: earringsGreenPhoto,
+    images: [earringsGreenPhoto],
     description:
       "Round ceramic earrings with geometric patterns in green and white glaze on beige clay.",
     descriptionUk:
