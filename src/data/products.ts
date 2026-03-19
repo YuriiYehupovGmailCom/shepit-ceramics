@@ -72,8 +72,8 @@ export const products: Product[] = [
     currency: "₴",
     category: "pendants",
     categoryUk: "Кулони",
-    image: ptashkaPendant,
-    images: [ptashkaPendant],
+    image: ptashkaPhoto1,
+    images: [ptashkaPhoto1, ptashkaPhoto2],
     description:
       "A ceramic pendant shaped like a bird — «Ptashka». Made from beige clay with black and transparent glaze.",
     descriptionUk:
