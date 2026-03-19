@@ -4,8 +4,9 @@
 
 import chokerPhoto1 from "@/assets/choker-photo-1.png";
 import chokerPhoto2 from "@/assets/choker-photo-2.png";
-import ptashkaPendant from "@/assets/ptashka-pendant.png";
-import ceramicEarringsGreen from "@/assets/ceramic-earrings-green.png";
+import ptashkaPhoto1 from "@/assets/ptashka-photo-1.png";
+import ptashkaPhoto2 from "@/assets/ptashka-photo-2.png";
+import earringsGreenPhoto from "@/assets/earrings-green-photo.png";
 import productPendant2 from "@/assets/product-pendant-2.jpg";
 import productBracelet1 from "@/assets/product-bracelet-1.jpg";
 import productEarring2 from "@/assets/product-earring-2.jpg";
