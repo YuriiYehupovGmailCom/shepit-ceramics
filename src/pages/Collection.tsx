@@ -12,10 +12,9 @@ import { products } from "@/data/products";
 
 const categories = [
   { key: "all", label: "Усі" },
+  { key: "chokers", label: "Чокери" },
+  { key: "pendants", label: "Підвіски" },
   { key: "earrings", label: "Сережки" },
-  { key: "pendants", label: "Кулони" },
-  { key: "brooches", label: "Брошки" },
-  { key: "bracelets", label: "Браслети" },
 ] as const;
 
 const Collection = () => {
