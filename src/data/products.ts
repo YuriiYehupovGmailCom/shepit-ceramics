@@ -2,13 +2,12 @@
  * Product data for Shepit Ceramics.
  */
 
-import chokerPhoto1 from "@/assets/choker-photo-1.png";
+import chokerPhotoNew from "@/assets/choker-photo-new.png";
 import chokerPhoto2 from "@/assets/choker-photo-2.png";
 import ptashkaPhoto1 from "@/assets/ptashka-photo-1.png";
 import ptashkaPhoto2 from "@/assets/ptashka-photo-2.png";
 import earringsGreenPhoto from "@/assets/earrings-green-photo.png";
 import productPendant2 from "@/assets/product-pendant-2.jpg";
-import productBracelet1 from "@/assets/product-bracelet-1.jpg";
 import productEarring2 from "@/assets/product-earring-2.jpg";
 
 export interface Product {
@@ -18,7 +17,7 @@ export interface Product {
   nameUk: string;
   price: number;
   currency: string;
-  category: "earrings" | "pendants" | "brooches" | "bracelets";
+  category: "chokers" | "pendants" | "earrings" | "mugs";
   categoryUk: string;
   image: string;
   images: string[];
@@ -37,10 +36,10 @@ export const products: Product[] = [
     nameUk: "Чокер з керамічною підвіскою і намистинами",
     price: 600,
     currency: "₴",
-    category: "pendants",
-    categoryUk: "Кулони",
-    image: chokerPhoto1,
-    images: [chokerPhoto1, chokerPhoto2],
+    category: "chokers",
+    categoryUk: "Чокери",
+    image: chokerPhotoNew,
+    images: [chokerPhotoNew, chokerPhoto2],
     description:
       "A choker with a handmade ceramic pendant and beads. Copper fittings and memory wire base create a comfortable fit.",
     descriptionUk:
@@ -71,7 +70,7 @@ export const products: Product[] = [
     price: 300,
     currency: "₴",
     category: "pendants",
-    categoryUk: "Кулони",
+    categoryUk: "Підвіски",
     image: ptashkaPhoto1,
     images: [ptashkaPhoto1, ptashkaPhoto2],
     description:
@@ -118,35 +117,6 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: "4",
-    slug: "terracotta-bead-bracelet",
-    name: "Terracotta Bead Bracelet",
-    nameUk: "Браслет «Глиняні Намистини»",
-    price: 1200,
-    currency: "₴",
-    category: "bracelets",
-    categoryUk: "Браслети",
-    image: productBracelet1,
-    images: [productBracelet1],
-    description:
-      "Hand-rolled terracotta beads on a natural linen macramé cord with an adjustable sliding knot.",
-    descriptionUk:
-      "Терракотові намистини ручної роботи на лляному шнурі макраме з регульованим вузлом.",
-    details: [
-      "Material: High-fire terracotta beads",
-      "Cord: Natural linen, adjustable",
-      "Bead size: approx. 10mm each",
-      "Fits wrists 15–20 cm",
-    ],
-    detailsUk: [
-      "Матеріал: високотемпературні терракотові намистини",
-      "Шнур: натуральний льон, регульований",
-      "Розмір намистин: прибл. 10 мм кожна",
-      "Підходить для зап'ясть 15–20 см",
-    ],
-    inStock: true,
-  },
-  {
     id: "5",
     slug: "earth-stone-studs",
     name: "Earth Stone Studs",
@@ -185,7 +155,7 @@ export const products: Product[] = [
     price: 2100,
     currency: "₴",
     category: "pendants",
-    categoryUk: "Кулони",
+    categoryUk: "Підвіски",
     image: productPendant2,
     images: [productPendant2],
     description:
