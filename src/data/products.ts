@@ -7,8 +7,12 @@ import chokerPhoto2 from "@/assets/choker-photo-2.png";
 import ptashkaPhoto1 from "@/assets/ptashka-photo-1.png";
 import ptashkaPhoto2 from "@/assets/ptashka-photo-2.png";
 import earringsGreenPhoto from "@/assets/earrings-green-photo.png";
-import productPendant2 from "@/assets/product-pendant-2.jpg";
-import productEarring2 from "@/assets/product-earring-2.jpg";
+import mugPhoto1 from "@/assets/mug-photo-1.png";
+import mugPhoto2 from "@/assets/mug-photo-2.png";
+import horseOrnament from "@/assets/horse-ornament.png";
+import windChime1 from "@/assets/wind-chime-1.png";
+import windChime2 from "@/assets/wind-chime-2.png";
+import windChime3 from "@/assets/wind-chime-3.png";
 
 export interface Product {
   id: string;
@@ -17,7 +21,7 @@ export interface Product {
   nameUk: string;
   price: number;
   currency: string;
-  category: "chokers" | "pendants" | "earrings" | "mugs";
+  category: "chokers" | "pendants" | "earrings" | "mugs" | "xmas" | "windchimes";
   categoryUk: string;
   image: string;
   images: string[];
@@ -117,62 +121,89 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: "5",
-    slug: "earth-stone-studs",
-    name: "Earth Stone Studs",
-    nameUk: "Пусети «Земляний Камінь»",
-    price: 780,
+    id: "4",
+    slug: "ceramic-mug-blue-ornament",
+    name: "Ceramic Mug with Blue Ornament",
+    nameUk: "Керамічна чашка з синім орнаментом",
+    price: 650,
     currency: "₴",
-    category: "earrings",
-    categoryUk: "Сережки",
-    image: productEarring2,
-    images: [productEarring2],
+    category: "mugs",
+    categoryUk: "Горнятка",
+    image: mugPhoto1,
+    images: [mugPhoto1, mugPhoto2],
     description:
-      "Minimal ceramic stud earrings in sage green and terracotta. Light, subtle, and grounding.",
+      "A handmade ceramic mug with a traditional blue geometric ornament. Perfect for your morning coffee or tea.",
     descriptionUk:
-      "Мінімалістичні керамічні пусети у дуеті шавлієвого зеленого та терракоти. Легкі, витончені, заземлюючі.",
+      "Керамічна чашка ручної роботи з традиційним синім геометричним орнаментом. Ідеальна для ранкової кави чи чаю.",
     details: [
-      "Material: High-fire stoneware clay",
-      "Glaze: Sage green + terracotta duo",
-      "Posts: Surgical steel",
-      "Size: approx. 1.2 cm",
-      "Weight: 3g per earring",
+      "Material: White stoneware clay",
+      "Glaze: White and cobalt blue",
+      "Volume: ~250 ml",
+      "Dishwasher safe",
     ],
     detailsUk: [
-      "Матеріал: високотемпературна кам'яна глина",
-      "Глазур: шавлієвий зелений + терракота",
-      "Штифти: хірургічна сталь",
-      "Розмір: прибл. 1,2 см",
-      "Вага: 3 г кожна сережка",
+      "Матеріал: біла кам'яна глина",
+      "Полива: біла і кобальтова синя",
+      "Об'єм: ~250 мл",
+      "Можна мити в посудомийній машині",
+    ],
+    inStock: true,
+  },
+  {
+    id: "5",
+    slug: "ceramic-horse-ornament",
+    name: "Ceramic Horse Christmas Ornament",
+    nameUk: "Керамічний конячка — ялинкова прикраса",
+    price: 250,
+    currency: "₴",
+    category: "xmas",
+    categoryUk: "Новорічні прикраси",
+    image: horseOrnament,
+    images: [horseOrnament],
+    description:
+      "A charming ceramic horse ornament inspired by Ukrainian folk art. Hand-painted with sun and plant motifs.",
+    descriptionUk:
+      "Чарівна керамічна конячка — ялинкова прикраса в дусі української народної традиції. Розписана вручну сонячними та рослинними мотивами.",
+    details: [
+      "Material: White clay",
+      "Decoration: Hand-painted folk motifs",
+      "Hanging: Red thread loop",
+      "Size: ~7 × 6 cm",
+    ],
+    detailsUk: [
+      "Матеріал: біла глина",
+      "Декор: розпис народними мотивами вручну",
+      "Підвіс: червона нитка",
+      "Розмір: ~7 × 6 см",
     ],
     inStock: true,
   },
   {
     id: "6",
-    slug: "midnight-teardrop-pendant",
-    name: "Midnight Teardrop Pendant",
-    nameUk: "Кулон «Опівнічна Крапля»",
-    price: 2100,
+    slug: "ceramic-fish-wind-chime",
+    name: "Ceramic Fish Wind Chime",
+    nameUk: "Керамічний передзвін «Рибки»",
+    price: 800,
     currency: "₴",
-    category: "pendants",
-    categoryUk: "Підвіски",
-    image: productPendant2,
-    images: [productPendant2],
+    category: "windchimes",
+    categoryUk: "Передзвони",
+    image: windChime1,
+    images: [windChime1, windChime2, windChime3],
     description:
-      "A dramatic teardrop pendant with deep brown glaze and gold leaf accents.",
+      "A handcrafted ceramic wind chime with fish-shaped pendants on a natural driftwood branch. Each fish is individually sculpted and glazed.",
     descriptionUk:
-      "Вражаючий каплеподібний кулон із глибокою коричневою глазур'ю та акцентами сусального золота.",
+      "Керамічний передзвін з підвісками у формі рибок на натуральній гілці. Кожна рибка вилеплена та вкрита глазур'ю індивідуально.",
     details: [
-      "Material: High-fire stoneware clay",
-      "Glaze: Dark brown with 24k gold leaf accents",
-      "Cord: Genuine leather, adjustable",
-      "Pendant size: approx. 5 × 2.5 cm",
+      "Material: White and brown clay",
+      "Decoration: Folk geometric patterns",
+      "Hanging: Natural cotton cord on driftwood",
+      "Size: ~20 × 25 cm",
     ],
     detailsUk: [
-      "Матеріал: високотемпературна кам'яна глина",
-      "Глазур: темно-коричнева з акцентами сусального золота 24к",
-      "Шнур: натуральна шкіра, регульований",
-      "Розмір кулона: прибл. 5 × 2,5 см",
+      "Матеріал: біла і коричнева глина",
+      "Декор: народні геометричні орнаменти",
+      "Підвіс: натуральна бавовняна нитка на гілці",
+      "Розмір: ~20 × 25 см",
     ],
     inStock: true,
   },
