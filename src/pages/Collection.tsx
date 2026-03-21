@@ -15,7 +15,6 @@ const categories = [
   { key: "chokers", label: "Чокери" },
   { key: "pendants", label: "Підвіски" },
   { key: "earrings", label: "Сережки" },
-  { key: "sets", label: "Набори" },
   { key: "mugs", label: "Горнятка" },
   { key: "xmas", label: "Новорічні прикраси" },
   { key: "windchimes", label: "Передзвони" },
