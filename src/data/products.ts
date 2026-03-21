@@ -6,13 +6,22 @@ import chokerPhotoNew from "@/assets/choker-photo-new.png";
 import chokerPhoto2 from "@/assets/choker-photo-2.png";
 import ptashkaPhoto1 from "@/assets/ptashka-photo-1.png";
 import ptashkaPhoto2 from "@/assets/ptashka-photo-2.png";
-import earringsGreenPhoto from "@/assets/earrings-green-photo.png";
 import mugPhoto1 from "@/assets/mug-photo-1.png";
 import mugPhoto2 from "@/assets/mug-photo-2.png";
-import horseOrnament from "@/assets/horse-ornament.png";
 import windChime1 from "@/assets/wind-chime-1.png";
 import windChime2 from "@/assets/wind-chime-2.png";
 import windChime3 from "@/assets/wind-chime-3.png";
+import ceramicEarringsBlue1 from "@/assets/ceramic-earrings-blue-1.png";
+import ceramicEarringsBlue2 from "@/assets/ceramic-earrings-blue-2.png";
+import ceramicEarringsBrown1 from "@/assets/ceramic-earrings-brown-1.png";
+import ceramicEarringsBrown2 from "@/assets/ceramic-earrings-brown-2.png";
+import lemkivshchynaSet1 from "@/assets/lemkivshchyna-set-1.png";
+import lemkivshchynaSet2 from "@/assets/lemkivshchyna-set-2.png";
+import lemkivshchynaSet3 from "@/assets/lemkivshchyna-set-3.png";
+import ptashkaBrown1 from "@/assets/ptashka-brown-1.png";
+import ceramicEarringsBrownWhite1 from "@/assets/ceramic-earrings-brown-white-1.png";
+import horseOrnamentWhite1 from "@/assets/horse-ornament-white-1.png";
+import horseOrnamentWhite2 from "@/assets/horse-ornament-white-2.png";
 
 export interface Product {
   id: string;
@@ -21,7 +30,14 @@ export interface Product {
   nameUk: string;
   price: number;
   currency: string;
-  category: "chokers" | "pendants" | "earrings" | "mugs" | "xmas" | "windchimes";
+  category:
+    | "chokers"
+    | "pendants"
+    | "earrings"
+    | "mugs"
+    | "xmas"
+    | "windchimes"
+    | "sets";
   categoryUk: string;
   image: string;
   images: string[];
@@ -94,33 +110,6 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: "3",
-    slug: "ceramic-earrings-green",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки",
-    price: 350,
-    currency: "₴",
-    category: "earrings",
-    categoryUk: "Сережки",
-    image: earringsGreenPhoto,
-    images: [earringsGreenPhoto],
-    description:
-      "Round ceramic earrings with geometric patterns in green and white glaze on beige clay.",
-    descriptionUk:
-      "Круглі керамічні сережки з геометричним орнаментом. Біла і зелена поливи на бежевій глині молоченій.",
-    details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and green",
-      "Size: 3 × 3 cm",
-    ],
-    detailsUk: [
-      "Матеріал: бежева глина молочена",
-      "Полива: біла і зелена",
-      "Розмір: 3×3 см",
-    ],
-    inStock: true,
-  },
-  {
     id: "4",
     slug: "ceramic-mug-blue-ornament",
     name: "Ceramic Mug with Blue Ornament",
@@ -150,35 +139,6 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: "5",
-    slug: "ceramic-horse-ornament",
-    name: "Ceramic Horse Christmas Ornament",
-    nameUk: "Керамічний конячка — ялинкова прикраса",
-    price: 250,
-    currency: "₴",
-    category: "xmas",
-    categoryUk: "Новорічні прикраси",
-    image: horseOrnament,
-    images: [horseOrnament],
-    description:
-      "A charming ceramic horse ornament inspired by Ukrainian folk art. Hand-painted with sun and plant motifs.",
-    descriptionUk:
-      "Чарівна керамічна конячка — ялинкова прикраса в дусі української народної традиції. Розписана вручну сонячними та рослинними мотивами.",
-    details: [
-      "Material: White clay",
-      "Decoration: Hand-painted folk motifs",
-      "Hanging: Red thread loop",
-      "Size: ~7 × 6 cm",
-    ],
-    detailsUk: [
-      "Матеріал: біла глина",
-      "Декор: розпис народними мотивами вручну",
-      "Підвіс: червона нитка",
-      "Розмір: ~7 × 6 см",
-    ],
-    inStock: true,
-  },
-  {
     id: "6",
     slug: "ceramic-fish-wind-chime",
     name: "Ceramic Fish Wind Chime",
@@ -204,6 +164,170 @@ export const products: Product[] = [
       "Декор: народні геометричні орнаменти",
       "Підвіс: натуральна бавовняна нитка на гілці",
       "Розмір: ~20 × 25 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "7",
+    slug: "ceramic-earrings-blue",
+    name: "Ceramic Earrings",
+    nameUk: "Керамічні сережки біло-сині",
+    price: 350,
+    currency: "₴",
+    category: "earrings",
+    categoryUk: "Сережки",
+    image: ceramicEarringsBlue1,
+    images: [ceramicEarringsBlue1, ceramicEarringsBlue2],
+    description:
+      "Handmade ceramic earrings with a blue and white geometric pattern on milk-fired beige clay.",
+    descriptionUk:
+      "Керамічні сережки ручної роботи з синьо-білим геометричним орнаментом на бежевій глині молоченій.",
+    details: [
+      "Material: Beige clay, milk-fired",
+      "Glaze: White and blue",
+      "Size: 2.5 × 2.5 cm",
+    ],
+    detailsUk: [
+      "Матеріал: бежева глина молочена",
+      "Полива: біла і синя",
+      "Розмір: 2,5×2,5 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "8",
+    slug: "ceramic-earrings-brown",
+    name: "Brown Ceramic Earrings",
+    nameUk: "Керамічні сережки коричневі",
+    price: 350,
+    currency: "₴",
+    category: "earrings",
+    categoryUk: "Сережки",
+    image: ceramicEarringsBrown1,
+    images: [ceramicEarringsBrown1, ceramicEarringsBrown2],
+    description:
+      "Handmade brown clay earrings with a white geometric glaze pattern.",
+    descriptionUk:
+      "Керамічні сережки ручної роботи з коричневої глини з білим геометричним орнаментом.",
+    details: [
+      "Material: Brown clay",
+      "Glaze: White",
+      "Size: 2.7 × 2.7 cm",
+    ],
+    detailsUk: [
+      "Матеріал: коричнева глина",
+      "Полива: біла",
+      "Розмір: 2,7×2,7 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "9",
+    slug: "lemkivshchyna-ceramic-set",
+    name: "Ceramic Jewelry Set «Lemkivshchyna»",
+    nameUk: "Сережки та підвіска із колекції «Лемківщина»",
+    price: 650,
+    currency: "₴",
+    category: "sets",
+    categoryUk: "Набори",
+    image: lemkivshchynaSet1,
+    images: [lemkivshchynaSet1, lemkivshchynaSet2, lemkivshchynaSet3],
+    description:
+      "A ceramic jewelry set from the «Lemkivshchyna» collection with earrings and a pendant in vivid folk-inspired glazes.",
+    descriptionUk:
+      "Керамічний набір із колекції «Лемківщина»: сережки та підвіска з виразним орнаментом і кольоровими поливами.",
+    details: [
+      "Material: Beige clay",
+      "Glaze: Colored glazes",
+      "Earrings size: 2.7 × 2.7 cm",
+      "Pendant size: 3 × 3 cm",
+    ],
+    detailsUk: [
+      "Матеріал: бежева глина",
+      "Полива: кольорові поливи",
+      "Розмір сережок: 2,7×2,7 см",
+      "Розмір підвіски: 3×3 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "10",
+    slug: "ptashka-ceramic-pendant-brown",
+    name: "Ceramic Pendant «Ptashka»",
+    nameUk: "Керамічна підвіска «Пташка»",
+    price: 300,
+    currency: "₴",
+    category: "pendants",
+    categoryUk: "Підвіски",
+    image: ptashkaBrown1,
+    images: [ptashkaBrown1],
+    description:
+      "A ceramic pendant shaped like a bird, crafted from brown clay with white glaze details.",
+    descriptionUk:
+      "Керамічна підвіска у формі пташки з коричневої глини з білою поливою.",
+    details: [
+      "Material: Brown clay",
+      "Glaze: White",
+      "Size: 4 × 4.5 cm",
+    ],
+    detailsUk: [
+      "Матеріал: коричнева глина",
+      "Полива: біла",
+      "Розмір: 4×4,5 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "11",
+    slug: "ceramic-earrings-brown-white",
+    name: "Ceramic Earrings",
+    nameUk: "Керамічні сережки",
+    price: 350,
+    currency: "₴",
+    category: "earrings",
+    categoryUk: "Сережки",
+    image: ceramicEarringsBrownWhite1,
+    images: [ceramicEarringsBrownWhite1],
+    description:
+      "Handmade ceramic earrings from brown clay with a white geometric glaze pattern.",
+    descriptionUk:
+      "Керамічні сережки ручної роботи з коричневої глини з білим геометричним орнаментом.",
+    details: [
+      "Material: Brown clay",
+      "Glaze: White",
+      "Size: 2.5 × 2.5 cm",
+    ],
+    detailsUk: [
+      "Матеріал: коричнева глина",
+      "Полива: біла",
+      "Розмір: 2,5×2,5 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "12",
+    slug: "horse-christmas-ornament-white",
+    name: "Christmas Ornament «Horse»",
+    nameUk: "Ялинкова прикраса «Коник»",
+    price: 400,
+    currency: "₴",
+    category: "xmas",
+    categoryUk: "Новорічні прикраси",
+    image: horseOrnamentWhite1,
+    images: [horseOrnamentWhite1, horseOrnamentWhite2],
+    description:
+      "A ceramic Christmas horse ornament made from beige clay with white glaze.",
+    descriptionUk:
+      "Керамічна ялинкова прикраса у формі коника з бежевої глини з білою поливою.",
+    details: [
+      "Material: Beige clay",
+      "Glaze: White",
+      "Size: 7 × 8 cm",
+    ],
+    detailsUk: [
+      "Матеріал: бежева глина",
+      "Полива: біла",
+      "Розмір: 7×8 см",
     ],
     inStock: true,
   },
