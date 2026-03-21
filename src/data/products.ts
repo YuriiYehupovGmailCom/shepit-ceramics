@@ -11,17 +11,6 @@ import mugPhoto2 from "@/assets/mug-photo-2.png";
 import windChime1 from "@/assets/wind-chime-1.png";
 import windChime2 from "@/assets/wind-chime-2.png";
 import windChime3 from "@/assets/wind-chime-3.png";
-import ceramicEarringsBlue1 from "@/assets/ceramic-earrings-blue-1.png";
-import ceramicEarringsBlue2 from "@/assets/ceramic-earrings-blue-2.png";
-import ceramicEarringsBrown1 from "@/assets/ceramic-earrings-brown-1.png";
-import ceramicEarringsBrown2 from "@/assets/ceramic-earrings-brown-2.png";
-import lemkivshchynaSet1 from "@/assets/lemkivshchyna-set-1.png";
-import lemkivshchynaSet2 from "@/assets/lemkivshchyna-set-2.png";
-import lemkivshchynaSet3 from "@/assets/lemkivshchyna-set-3.png";
-import ptashkaBrown1 from "@/assets/ptashka-brown-1.png";
-import ceramicEarringsBrownWhite1 from "@/assets/ceramic-earrings-brown-white-1.png";
-import horseOrnamentWhite1 from "@/assets/horse-ornament-white-1.png";
-import horseOrnamentWhite2 from "@/assets/horse-ornament-white-2.png";
 
 export interface Product {
   id: string;
