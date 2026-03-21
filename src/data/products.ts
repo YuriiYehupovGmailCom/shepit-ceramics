@@ -25,8 +25,7 @@ export interface Product {
     | "earrings"
     | "mugs"
     | "xmas"
-    | "windchimes"
-    | "sets";
+    | "windchimes";
   categoryUk: string;
   image: string;
   images: string[];
