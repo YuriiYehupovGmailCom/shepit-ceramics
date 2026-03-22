@@ -10,26 +10,24 @@
     --background: 40 33% 96%;
     --foreground: 20 12% 16%;
 
-    /* Deep terracotta red — primary brand color */
-    --primary: 14 52% 42%;
-    --primary-foreground: 40 33% 96%;
-    --primary-hover: 14 52% 35%;
+    /* Palette-driven button colors */
+    --primary: 2 16% 41%;
+    --primary-foreground: 210 17% 94%;
+    --primary-hover: 2 16% 34%;
 
-    /* Forest green — accent / secondary */
-    --secondary: 152 32% 28%;
-    --secondary-foreground: 40 33% 96%;
+    --secondary: 216 16% 56%;
+    --secondary-foreground: 210 17% 94%;
 
     /* Muted earth tones */
     --muted: 36 20% 90%;
     --muted-foreground: 20 8% 48%;
 
-    /* Accent — warm terracotta lighter */
-    --accent: 20 40% 88%;
+    --accent: 27 14% 79%;
     --accent-foreground: 20 12% 16%;
 
     --border: 30 15% 85%;
     --input: 30 15% 85%;
-    --ring: 14 52% 42%;
+    --ring: 216 16% 56%;
 
     --card: 40 30% 98%;
     --card-foreground: 20 12% 16%;
@@ -46,34 +44,34 @@
 
     --sidebar-background: 40 33% 96%;
     --sidebar-foreground: 20 12% 16%;
-    --sidebar-primary: 14 52% 42%;
-    --sidebar-primary-foreground: 40 33% 96%;
-    --sidebar-accent: 20 40% 88%;
+    --sidebar-primary: 2 16% 41%;
+    --sidebar-primary-foreground: 210 17% 94%;
+    --sidebar-accent: 27 14% 79%;
     --sidebar-accent-foreground: 20 12% 16%;
     --sidebar-border: 30 15% 85%;
-    --sidebar-ring: 14 52% 42%;
+    --sidebar-ring: 216 16% 56%;
   }
 
   .dark {
     --background: 20 12% 10%;
     --foreground: 40 20% 90%;
 
-    --primary: 14 52% 55%;
+    --primary: 27 14% 79%;
     --primary-foreground: 20 12% 10%;
-    --primary-hover: 14 52% 48%;
+    --primary-hover: 27 14% 71%;
 
-    --secondary: 152 28% 38%;
-    --secondary-foreground: 40 20% 90%;
+    --secondary: 216 16% 56%;
+    --secondary-foreground: 210 17% 94%;
 
     --muted: 20 10% 18%;
     --muted-foreground: 30 10% 58%;
 
-    --accent: 20 25% 22%;
+    --accent: 2 16% 41%;
     --accent-foreground: 40 20% 90%;
 
     --border: 20 10% 22%;
     --input: 20 10% 22%;
-    --ring: 14 52% 55%;
+    --ring: 27 14% 79%;
 
     --card: 20 12% 12%;
     --card-foreground: 40 20% 90%;
