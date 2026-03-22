@@ -52,7 +52,7 @@ const AboutCraft = () => {
           <div className="aspect-[3/4] overflow-hidden rounded-sm">
             <img
               src={artisanImage}
-              alt="Майстриня створює керамічні прикраси в нашій київській студії"
+              alt="Майстриня створює керамічні прикраси в нашій майстерні"
               className="w-full h-full object-cover"
               loading="lazy"
             />

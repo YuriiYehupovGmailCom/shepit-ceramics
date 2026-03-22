@@ -219,7 +219,7 @@ const ProductDetail = () => {
 
               <Button
                 onClick={handleAddToCart}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider text-sm py-6"
+                className="flex-1 bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider text-base md:text-lg py-6"
               >
                 Додати в кошик — {product.price * quantity} {product.currency}
               </Button>

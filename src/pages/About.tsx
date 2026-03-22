@@ -58,7 +58,7 @@ const About = () => {
           <div className="aspect-[3/4] overflow-hidden rounded-sm">
             <img
               src={artisanImage}
-              alt="Майстриня за роботою в нашій київській студії"
+              alt="Майстриня за роботою в нашій майстерні"
               className="w-full h-full object-cover"
             />
           </div>
