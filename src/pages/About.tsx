@@ -41,10 +41,10 @@ const About = () => {
         <div ref={storyRef} className="fade-up grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
             <h2 className="font-serif text-2xl font-light text-foreground mb-4">
-              Наша студія
+              Майстерня
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Розташована в Києві, Україна, наша невелика студія — це місце, де
+              Розташована в Малому Березному, Закарпаття, невелика майстерня — це місце, де
               традиція зустрічається з наміром. Ми працюємо з місцевою кам'яною
               глиною, видобутою з українських родовищ, і випалюємо кожну
               прикрасу за температури понад 1200°C.

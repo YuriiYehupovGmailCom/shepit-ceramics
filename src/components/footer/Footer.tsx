@@ -123,7 +123,7 @@ const Footer = () => {
       <div className="border-t border-border">
         <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-xs text-muted-foreground">
-            © 2025 Shepit Ceramics. Ручна робота, Київ, Україна.
+            © 2026 Shepit Ceramics. Ручна робота, Малий Березний, Україна.
           </p>
           <div className="flex gap-4">
             <Link to="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
