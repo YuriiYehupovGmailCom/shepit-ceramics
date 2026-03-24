@@ -72,7 +72,7 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2">
                 {[
-                  { label: "Про нас", href: "/about" },
+                  { label: "Про Shepit", href: "/about" },
                   { label: "Догляд", href: "/care" },
                   { label: "Доставка", href: "/care" },
                   { label: "Конфіденційність", href: "/privacy-policy" },

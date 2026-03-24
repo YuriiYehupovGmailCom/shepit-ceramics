@@ -14,7 +14,7 @@ const Header = () => {
 
   const navLinks = [
     { label: "Колекція", href: "/collection" },
-    { label: "Про нас", href: "/about" },
+    { label: "Про Shepit", href: "/about" },
     { label: "Догляд", href: "/care" },
   ];
 
@@ -48,7 +48,7 @@ const Header = () => {
           to="/"
           className="absolute left-1/2 -translate-x-1/2 font-serif text-xl md:text-2xl font-medium tracking-widest text-foreground uppercase"
         >
-          Shepit
+          Shepit Ceramics
         </Link>
 
         {/* Shopping bag — right */}

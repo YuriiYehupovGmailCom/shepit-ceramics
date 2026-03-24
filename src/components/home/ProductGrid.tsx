@@ -14,10 +14,10 @@ const ProductGrid = () => {
     <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
       <div ref={fadeRef} className="fade-up">
         <h2 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-2">
-          Наша колекція
+          Колекція
         </h2>
         <p className="text-muted-foreground text-sm mb-10 max-w-lg">
-          Кожна прикраса вилеплена, вкрита глазур'ю та випалена вручну в нашій майстерні.
+          Кожна прикраса вилеплена, вкрита глазур'ю та випалена вручну в керамічній майстерні.
         </p>
       </div>
 

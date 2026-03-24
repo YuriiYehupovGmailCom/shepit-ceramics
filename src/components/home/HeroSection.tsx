@@ -20,19 +20,25 @@ const HeroSection = () => {
         className="fade-up flex flex-col justify-center px-8 md:px-16 lg:px-20 py-16 lg:py-0 order-2 lg:order-1"
       >
         <p className="text-sm tracking-[0.3em] uppercase text-muted-foreground mb-4">
-          Ручна робота з України
+          Кераміка ручної роботи
         </p>
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] text-foreground mb-6">
-          Керамічні прикраси,
+          Шепіт – це щось між <em className="font-light italic"> тишею</em>
           <br />
-          <em className="font-light italic">створені руками,</em>
-          <br />
-          випалені з любов'ю
+          і шумом
         </h1>
-        <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
-          Кожна прикраса зберігає тепло печі та дух української
-          ремісничої традиції. Жодні дві не однакові — у цьому краса Shepit.
-        </p>
+        <div className="max-w-xl mb-8 space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Шепіт – це початок звуку. Щось не надто гучне, але і не тиша. Щось перехідне, щось середнє
+            між нічим і дією. Це ранок, коли тільки починається метушня життя. Це вечір, коли
+            на мить зупиняєшся, щоб попрощатися з пройдешнім днем. Це схід і
+            захід сонця.
+          </p>
+          <p>
+            Це шум дерев, шелест трав у полі, подих вітру, шурхіт крил
+            птахів під час польоту...
+          </p>
+        </div>
         <Link
           to="/collection"
           className="inline-flex items-center gap-2 text-sm tracking-wider uppercase text-primary hover:text-primary-hover transition-colors group"
