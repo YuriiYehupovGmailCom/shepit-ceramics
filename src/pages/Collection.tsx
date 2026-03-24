@@ -17,6 +17,7 @@ const categories = [
   { key: "earrings", label: "Сережки" },
   { key: "sets", label: "Набори" },
   { key: "mugs", label: "Горнятка" },
+  { key: "pysanky", label: "Писанки" },
   { key: "xmas", label: "Новорічні прикраси" },
   { key: "windchimes", label: "Передзвони" },
 ] as const;

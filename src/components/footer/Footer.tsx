@@ -43,6 +43,7 @@ const Footer = () => {
                   { label: "Підвіски", href: "/collection" },
                   { label: "Сережки", href: "/collection" },
                   { label: "Горнятка", href: "/collection" },
+                  { label: "Писанки", href: "/collection" },
                   { label: "Новорічні прикраси", href: "/collection" },
                   { label: "Передзвони", href: "/collection" },
                 ].map((item) => (
