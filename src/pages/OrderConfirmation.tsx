@@ -23,11 +23,11 @@ const OrderConfirmation = () => {
         </h1>
 
         <p className="text-muted-foreground leading-relaxed mb-6 max-w-md mx-auto">
-          Ваше замовлення прийнято. Найближчим часом надійде повідомлення для підтвердження деталей та відправки.
+          Ваше замовлення прийнято. Очікуйте повідомлення щодо оплати та відправки.
         </p>
 
         <p className="text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
-          Кожен виріб Shepit Ceramics — це ручна робота, тому прикраса буде дбайливо упакована та доставлена з любов'ю 🤍
+          Кожен виріб Shepit Ceramics — це ручна робота, тому прикраса буде дбайливо упакована та доставлена з любов'ю
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

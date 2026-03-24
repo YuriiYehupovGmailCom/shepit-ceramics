@@ -7,8 +7,6 @@
  * /product/:slug     → Individual product detail page
  * /about             → About us / our story
  * /care              → Care guide for ceramic jewelry
- * /privacy-policy    → Privacy policy
- * /terms-of-service  → Terms of service
  *
  * STATE MANAGEMENT:
  * - CartProvider wraps all routes so cart state persists across pages.
@@ -27,8 +25,6 @@ import Collection from "./pages/Collection";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import CareGuide from "./pages/CareGuide";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import NotFound from "./pages/NotFound";
@@ -51,8 +47,6 @@ const App = () => (
             <Route path="/care" element={<CareGuide />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
