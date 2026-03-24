@@ -25,6 +25,7 @@ import Collection from "./pages/Collection";
 import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import CareGuide from "./pages/CareGuide";
+import Delivery from "./pages/Delivery";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/product/:slug" element={<ProductDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/care" element={<CareGuide />} />
+            <Route path="/delivery" element={<Delivery />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
             <Route path="*" element={<NotFound />} />

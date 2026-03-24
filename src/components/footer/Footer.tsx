@@ -65,7 +65,7 @@ const Footer = () => {
                 {[
                   { label: "Про Shepit", href: "/about" },
                   { label: "Догляд", href: "/care" },
-                  { label: "Доставка", href: "/care" },
+                  { label: "Доставка", href: "/delivery" },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
