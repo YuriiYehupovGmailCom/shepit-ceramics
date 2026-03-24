@@ -224,10 +224,6 @@ const ProductDetail = () => {
                 Додати в кошик — {product.price * quantity} {product.currency}
               </Button>
             </div>
-
-            <p className="text-xs text-muted-foreground">
-              Безкоштовна доставка від 3000 ₴
-            </p>
           </div>
         </div>
       </main>
