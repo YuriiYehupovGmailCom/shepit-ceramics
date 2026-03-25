@@ -15,6 +15,9 @@ import horseOrnamentWhite1 from "@/assets/horse-ornament-white-1.png";
 import horseOrnamentWhite2 from "@/assets/horse-ornament-white-2.png";
 import chokerBlueWhite1 from "@/assets/choker-blue-white-1.png";
 import chokerBlueWhite2 from "@/assets/choker-blue-white-2.png";
+import chokerRedWhite1 from "@/assets/choker-red-white-1.png";
+import chokerRedWhite2 from "@/assets/choker-red-white-2.png";
+import ceramicEarringsRedWhite1 from "@/assets/ceramic-earrings-red-white-1.png";
 import ceramicEarringsBlueWhiteSquare from "@/assets/ceramic-earrings-blue-white-square.png";
 import ptashkaWhite1 from "@/assets/ptashka-white-1.png";
 import ptashkaBlack1 from "@/assets/ptashka-black-1.png";
@@ -226,6 +229,28 @@ export const products: Product[] = [
     inStock: true,
   },
   {
+    id: "36",
+    slug: "choker-red-white-beads",
+    name: "Чокер з керамічною підвіскою і намистинами червоний",
+    price: 600,
+    currency: "₴",
+    category: "chokers",
+    categoryUk: "Чокери",
+    image: chokerRedWhite1,
+    images: [chokerRedWhite1, chokerRedWhite2],
+    description:
+      "Авторський чокер з молоченої бежевої глини з білою та червоною поливами, керамічною підвіскою і червоними намистинами.",
+    details: [
+      "Матеріал: бежева глина молочена",
+      "Полива: біла і червона",
+      "Фурнітура: мідна",
+      "Основа: дріт із пам'яттю",
+      "Окружність: 37 см + 6 см ланцюжок подовжувач",
+      "Розмір керамічної підвіски: 3×3 см",
+    ],
+    inStock: true,
+  },
+  {
     id: "14",
     slug: "ceramic-earrings-blue-white-square",
     name: "Керамічні сережки синьо-білі круглі",
@@ -241,6 +266,25 @@ export const products: Product[] = [
       "Матеріал: бежева глина молочена",
       "Полива: біла і синя",
       "Розмір: 3×3 см",
+    ],
+    inStock: true,
+  },
+  {
+    id: "37",
+    slug: "ceramic-earrings-red-white",
+    name: "Керамічні сережки червоні восьмигранні",
+    price: 350,
+    currency: "₴",
+    category: "earrings",
+    categoryUk: "Сережки",
+    image: ceramicEarringsRedWhite1,
+    images: [ceramicEarringsRedWhite1],
+    description:
+      "Керамічні сережки ручної роботи з червоно-білим геометричним орнаментом на бежевій глині молоченій.",
+    details: [
+      "Матеріал: бежева глина молочена",
+      "Полива: біла і червона",
+      "Розмір: 2.5х2.5 см",
     ],
     inStock: true,
   },
