@@ -68,7 +68,6 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
-  nameUk: string;
   price: number;
   currency: string;
   category:
@@ -84,9 +83,7 @@ export interface Product {
   image: string;
   images: string[];
   description: string;
-  descriptionUk: string;
   details: string[];
-  detailsUk: string[];
   inStock: boolean;
 }
 
@@ -94,8 +91,7 @@ export const products: Product[] = [
   {
     id: "7",
     slug: "ceramic-earrings-blue",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки біло-сині",
+    name: "Керамічні сережки біло-сині",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -103,15 +99,8 @@ export const products: Product[] = [
     image: ceramicEarringsBlue1,
     images: [ceramicEarringsBlue1, ceramicEarringsBlue2],
     description:
-      "Handmade ceramic earrings with a blue and white geometric pattern on milk-fired beige clay.",
-    descriptionUk:
       "Керамічні сережки ручної роботи з синьо-білим геометричним орнаментом на бежевій глині молоченій.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and blue",
-      "Size: 2.5 × 2.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла і синя",
       "Розмір: 2,5×2,5 см",
@@ -121,8 +110,7 @@ export const products: Product[] = [
   {
     id: "8",
     slug: "ceramic-earrings-brown",
-    name: "Brown Ceramic Earrings",
-    nameUk: "Керамічні сережки коричневі круглі",
+    name: "Керамічні сережки коричневі круглі",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -130,15 +118,8 @@ export const products: Product[] = [
     image: ceramicEarringsBrown1,
     images: [ceramicEarringsBrown1, ceramicEarringsBrown2],
     description:
-      "Handmade brown clay earrings with a white geometric glaze pattern.",
-    descriptionUk:
       "Керамічні сережки ручної роботи з коричневої глини з білим геометричним орнаментом.",
     details: [
-      "Material: Brown clay",
-      "Glaze: White",
-      "Size: 2.7 × 2.7 cm",
-    ],
-    detailsUk: [
       "Матеріал: коричнева глина",
       "Полива: біла",
       "Розмір: 2,7×2,7 см",
@@ -148,8 +129,7 @@ export const products: Product[] = [
   {
     id: "9",
     slug: "lemkivshchyna-ceramic-set",
-    name: "Ceramic Jewelry Set «Lemkivshchyna»",
-    nameUk: "Сережки та підвіска із колекції «Лемківщина»",
+    name: "Сережки та підвіска із колекції «Лемківщина»",
     price: 650,
     currency: "₴",
     category: "sets",
@@ -157,16 +137,8 @@ export const products: Product[] = [
     image: lemkivshchynaSet1,
     images: [lemkivshchynaSet1, lemkivshchynaSet2, lemkivshchynaSet3],
     description:
-      "A ceramic jewelry set from the «Lemkivshchyna» collection with earrings and a pendant in vivid folk-inspired glazes.",
-    descriptionUk:
       "Керамічний набір із колекції «Лемківщина»: сережки та підвіска з виразним орнаментом і кольоровими поливами.",
     details: [
-      "Material: Beige clay",
-      "Glaze: Colored glazes",
-      "Earrings size: 2.7 × 2.7 cm",
-      "Pendant size: 3 × 3 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: кольорові поливи",
       "Розмір сережок: 2,7×2,7 см",
@@ -177,8 +149,7 @@ export const products: Product[] = [
   {
     id: "10",
     slug: "ptashka-ceramic-pendant-brown",
-    name: "Ceramic Pendant «Ptashka»",
-    nameUk: "Керамічна підвіска «Пташка з орнаментом Крила»",
+    name: "Керамічна підвіска «Пташка з орнаментом Крила»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -186,15 +157,8 @@ export const products: Product[] = [
     image: ptashkaBrown1,
     images: [ptashkaBrown1],
     description:
-      "A ceramic pendant shaped like a bird, crafted from brown clay with white glaze details.",
-    descriptionUk:
       "Керамічна підвіска у формі пташки з коричневої глини з білою поливою.",
     details: [
-      "Material: Brown clay",
-      "Glaze: White",
-      "Size: 4 × 4.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: коричнева глина",
       "Полива: біла",
       "Розмір: 4×4,5 см",
@@ -204,8 +168,7 @@ export const products: Product[] = [
   {
     id: "11",
     slug: "ceramic-earrings-brown-white",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки коричневі восьмигранні",
+    name: "Керамічні сережки коричневі восьмигранні",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -213,15 +176,8 @@ export const products: Product[] = [
     image: ceramicEarringsBrownWhite1,
     images: [ceramicEarringsBrownWhite1],
     description:
-      "Handmade ceramic earrings from brown clay with a white geometric glaze pattern.",
-    descriptionUk:
       "Керамічні сережки ручної роботи з коричневої глини з білим геометричним орнаментом.",
     details: [
-      "Material: Brown clay",
-      "Glaze: White",
-      "Size: 2.5 × 2.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: коричнева глина",
       "Полива: біла",
       "Розмір: 2,5×2,5 см",
@@ -231,8 +187,7 @@ export const products: Product[] = [
   {
     id: "12",
     slug: "horse-christmas-ornament-white",
-    name: "Christmas Ornament «Horse»",
-    nameUk: "Ялинкова прикраса «Коник»",
+    name: "Ялинкова прикраса «Коник»",
     price: 400,
     currency: "₴",
     category: "xmas",
@@ -240,15 +195,8 @@ export const products: Product[] = [
     image: horseOrnamentWhite1,
     images: [horseOrnamentWhite1, horseOrnamentWhite2],
     description:
-      "A ceramic Christmas horse ornament made from beige clay with white glaze.",
-    descriptionUk:
       "Керамічна ялинкова прикраса у формі коника з бежевої глини з білою поливою.",
     details: [
-      "Material: Beige clay",
-      "Glaze: White",
-      "Size: 7 × 8 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: біла",
       "Розмір: 7×8 см",
@@ -258,8 +206,7 @@ export const products: Product[] = [
   {
     id: "13",
     slug: "choker-blue-white-beads",
-    name: "Choker with Ceramic Pendant and Beads",
-    nameUk: "Чокер з керамічною підвіскою і намистинами синій",
+    name: "Чокер з керамічною підвіскою і намистинами синій",
     price: 600,
     currency: "₴",
     category: "chokers",
@@ -267,18 +214,8 @@ export const products: Product[] = [
     image: chokerBlueWhite1,
     images: [chokerBlueWhite1, chokerBlueWhite2],
     description:
-      "A choker with a ceramic pendant made of milk-fired beige clay with white and blue glaze details, complemented by beads.",
-    descriptionUk:
       "Виготовлений з молоченої бежевої глини з білою та синьою поливами.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and blue",
-      "Fittings: Copper hardware",
-      "Base: Memory wire",
-      "Circumference: 37 cm + 6 cm extender chain",
-      "Pendant size: 3.3 × 3.3 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла і синя",
       "Фурнітура: мідна",
@@ -291,8 +228,7 @@ export const products: Product[] = [
   {
     id: "14",
     slug: "ceramic-earrings-blue-white-square",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки синьо-білі круглі",
+    name: "Керамічні сережки синьо-білі круглі",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -300,15 +236,8 @@ export const products: Product[] = [
     image: ceramicEarringsBlueWhiteSquare,
     images: [ceramicEarringsBlueWhiteSquare],
     description:
-      "Handmade ceramic earrings with a blue and white geometric pattern on milk-fired beige clay.",
-    descriptionUk:
       "Керамічні сережки ручної роботи з синьо-білим геометричним орнаментом на бежевій глині молоченій.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and blue",
-      "Size: 3 × 3 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла і синя",
       "Розмір: 3×3 см",
@@ -318,8 +247,7 @@ export const products: Product[] = [
   {
     id: "15",
     slug: "ptashka-white",
-    name: "Ceramic Pendant «White Bird»",
-    nameUk: "Керамічна підвіска «Пташка біла»",
+    name: "Керамічна підвіска «Пташка біла»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -327,15 +255,8 @@ export const products: Product[] = [
     image: ptashkaWhite1,
     images: [ptashkaWhite1],
     description:
-      "A delicate ceramic bird pendant, handcrafted from beige clay and covered with white glaze.",
-    descriptionUk:
       "Ніжна керамічна підвіска у формі пташки, виготовлена з бежевої глини та вкрита білою поливою.",
     details: [
-      "Material: Beige clay",
-      "Glaze: White",
-      "Size: 3.5 × 3.7 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: біла",
       "Розмір: 3.5х3.7 см",
@@ -345,8 +266,7 @@ export const products: Product[] = [
   {
     id: "16",
     slug: "ptashka-black",
-    name: "Ceramic Pendant «Black Bird»",
-    nameUk: "Керамічна підвіска «Пташка чорна»",
+    name: "Керамічна підвіска «Пташка чорна»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -354,15 +274,8 @@ export const products: Product[] = [
     image: ptashkaBlack1,
     images: [ptashkaBlack1],
     description:
-      "A ceramic bird pendant handcrafted from beige clay and finished with black glaze.",
-    descriptionUk:
       "Керамічна підвіска у формі пташки, виготовлена з бежевої глини та вкрита чорною поливою.",
     details: [
-      "Material: Beige clay",
-      "Glaze: Black",
-      "Size: 3.6 × 4.2 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: чорна",
       "Розмір: 3.6х4.2 см",
@@ -372,8 +285,7 @@ export const products: Product[] = [
   {
     id: "17",
     slug: "ptashka-grey",
-    name: "Ceramic Pendant «Grey Bird»",
-    nameUk: "Керамічна підвіска «Пташка сіра»",
+    name: "Керамічна підвіска «Пташка сіра»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -381,15 +293,8 @@ export const products: Product[] = [
     image: ptashkaGrey1,
     images: [ptashkaGrey1],
     description:
-      "A ceramic bird pendant made from milk-fired beige clay with white glaze accents.",
-    descriptionUk:
       "Керамічна підвіска у формі пташки, виготовлена з молоченої бежевої глини та вкрита білою поливою.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White",
-      "Size: 4.1 × 5 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла",
       "Розмір: 4.1х5 см",
@@ -399,8 +304,7 @@ export const products: Product[] = [
   {
     id: "18",
     slug: "ptashka-brown-small",
-    name: "Ceramic Pendant «Brown Bird»",
-    nameUk: "Керамічна підвіска «Пташка коричнева»",
+    name: "Керамічна підвіска «Пташка коричнева»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -408,15 +312,8 @@ export const products: Product[] = [
     image: ptashkaBrown2,
     images: [ptashkaBrown2],
     description:
-      "A small ceramic bird pendant made of brown clay with white glaze details.",
-    descriptionUk:
       "Керамічна підвіска у формі пташки, виготовлена з коричневої глини та вкрита білою поливою.",
     details: [
-      "Material: Brown clay",
-      "Glaze: White",
-      "Size: 3.1 × 3.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: коричнева глина",
       "Полива: біла",
       "Розмір: 3.1х3.5 см",
@@ -426,8 +323,7 @@ export const products: Product[] = [
   {
     id: "19",
     slug: "ptashka-black-beige",
-    name: "Ceramic Pendant «Black-Beige Bird»",
-    nameUk: "Керамічна підвіска «Пташка чорно-бежева»",
+    name: "Керамічна підвіска «Пташка чорно-бежева»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -435,15 +331,8 @@ export const products: Product[] = [
     image: ptashkaGreyWhite,
     images: [ptashkaGreyWhite],
     description:
-      "A ceramic bird pendant in black and beige, handcrafted from beige clay with black glaze.",
-    descriptionUk:
       "Керамічна підвіска «Пташка чорно-бежева» з бежевої глини, вкрита чорною поливою.",
     details: [
-      "Material: Beige clay",
-      "Glaze: Black",
-      "Size: 3.5 × 4 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: чорна",
       "Розмір: 3.5х4 см",
@@ -453,8 +342,7 @@ export const products: Product[] = [
   {
     id: "20",
     slug: "ptashka-trident",
-    name: "Ceramic Pendant «Bird with Trident»",
-    nameUk: "Керамічна підвіска «Пташка з тризубом»",
+    name: "Керамічна підвіска «Пташка з тризубом»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -462,15 +350,8 @@ export const products: Product[] = [
     image: ptashkaTrident,
     images: [ptashkaTrident],
     description:
-      "A unique ceramic bird pendant featuring a Trident symbol, made from beige clay with white glaze.",
-    descriptionUk:
       "Керамічна підвіска «Пташка з тризубом». Виготовлена з бежевої глини та вкрита білою поливою.",
     details: [
-      "Material: Beige clay",
-      "Glaze: White",
-      "Size: 3.7 × 4.4 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина",
       "Полива: біла",
       "Розмір: 3.7х4.4 см",
@@ -480,8 +361,7 @@ export const products: Product[] = [
   {
     id: "21",
     slug: "ptashka-grey-white",
-    name: "Ceramic Pendant «Grey-White Bird»",
-    nameUk: "Керамічна підвіска «Пташка сіро-біла»",
+    name: "Керамічна підвіска «Пташка сіро-біла»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -489,15 +369,8 @@ export const products: Product[] = [
     image: ptashkaBlackBeige,
     images: [ptashkaBlackBeige],
     description:
-      "A grey and white ceramic bird pendant, handcrafted from milk-fired beige clay with white glaze.",
-    descriptionUk:
       "Керамічна підвіска «Пташка сіро-біла». Виготовлена з молоченої бежевої глини та вкрита білою поливою.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White",
-      "Size: 3.2 × 3.7 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла",
       "Розмір: 3.2х3.7 см",
@@ -507,8 +380,7 @@ export const products: Product[] = [
   {
     id: "22",
     slug: "earrings-blue-white-small",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки синьо-білі",
+    name: "Керамічні сережки синьо-білі",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -516,15 +388,8 @@ export const products: Product[] = [
     image: earringsBlueWhiteSmall,
     images: [earringsBlueWhiteSmall],
     description:
-      "Handmade blue and white ceramic earrings made from milk-fired beige clay.",
-    descriptionUk:
       "Керамічні сережки синьо-білі з молоченої бежевої глини, вкриті білою та синьою поливами.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and blue",
-      "Size: 2.5 × 2.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла і синя",
       "Розмір: 2.5х2.5 см",
@@ -534,8 +399,7 @@ export const products: Product[] = [
   {
     id: "23",
     slug: "earrings-green-white-small",
-    name: "Ceramic Earrings",
-    nameUk: "Керамічні сережки зелені",
+    name: "Керамічні сережки зелені",
     price: 350,
     currency: "₴",
     category: "earrings",
@@ -543,15 +407,8 @@ export const products: Product[] = [
     image: earringsGreenWhiteSmall,
     images: [earringsGreenWhiteSmall],
     description:
-      "Handmade green ceramic earrings made from milk-fired beige clay.",
-    descriptionUk:
       "Керамічні сережки зелені з молоченої бежевої глини, вкриті білою та зеленою поливами.",
     details: [
-      "Material: Beige clay, milk-fired",
-      "Glaze: White and green",
-      "Size: 2.5 × 2.5 cm",
-    ],
-    detailsUk: [
       "Матеріал: бежева глина молочена",
       "Полива: біла і зелена",
       "Розмір: 2.5х2.5 см",
@@ -561,8 +418,7 @@ export const products: Product[] = [
   {
     id: "24",
     slug: "pysanka-1",
-    name: "Pysanka 1",
-    nameUk: "Писанка 1",
+    name: "Писанка 1",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -570,15 +426,8 @@ export const products: Product[] = [
     image: pysanka11,
     images: [pysanka11, pysanka12, pysanka13],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -587,8 +436,7 @@ export const products: Product[] = [
   {
     id: "25",
     slug: "pysanka-2",
-    name: "Pysanka 2",
-    nameUk: "Писанка 2",
+    name: "Писанка 2",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -596,15 +444,8 @@ export const products: Product[] = [
     image: pysanka21,
     images: [pysanka21, pysanka22, pysanka23],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -613,8 +454,7 @@ export const products: Product[] = [
   {
     id: "26",
     slug: "pysanka-3",
-    name: "Pysanka 3",
-    nameUk: "Писанка 3",
+    name: "Писанка 3",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -622,15 +462,8 @@ export const products: Product[] = [
     image: pysanka31,
     images: [pysanka31, pysanka32],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -639,8 +472,7 @@ export const products: Product[] = [
   {
     id: "27",
     slug: "pysanka-4",
-    name: "Pysanka 4",
-    nameUk: "Писанка 4",
+    name: "Писанка 4",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -648,15 +480,8 @@ export const products: Product[] = [
     image: pysanka41,
     images: [pysanka41, pysanka42, pysanka43],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -665,8 +490,7 @@ export const products: Product[] = [
   {
     id: "28",
     slug: "pysanka-5",
-    name: "Pysanka 5",
-    nameUk: "Писанка 5",
+    name: "Писанка 5",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -674,15 +498,8 @@ export const products: Product[] = [
     image: pysanka51,
     images: [pysanka51, pysanka52, pysanka53, pysanka54, pysanka55, pysanka56],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -691,8 +508,7 @@ export const products: Product[] = [
   {
     id: "29",
     slug: "pysanka-6",
-    name: "Pysanka 6",
-    nameUk: "Писанка 6",
+    name: "Писанка 6",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -700,15 +516,8 @@ export const products: Product[] = [
     image: pysanka61,
     images: [pysanka61, pysanka62, pysanka63],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -717,8 +526,7 @@ export const products: Product[] = [
   {
     id: "30",
     slug: "pysanka-7",
-    name: "Pysanka 7",
-    nameUk: "Писанка 7",
+    name: "Писанка 7",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -726,15 +534,8 @@ export const products: Product[] = [
     image: pysanka71,
     images: [pysanka71, pysanka72, pysanka73],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -743,8 +544,7 @@ export const products: Product[] = [
   {
     id: "31",
     slug: "pysanka-8",
-    name: "Pysanka 8",
-    nameUk: "Писанка 8",
+    name: "Писанка 8",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -752,15 +552,8 @@ export const products: Product[] = [
     image: pysanka81,
     images: [pysanka81, pysanka82, pysanka83],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -769,8 +562,7 @@ export const products: Product[] = [
   {
     id: "32",
     slug: "pysanka-9",
-    name: "Pysanka 9",
-    nameUk: "Писанка 9",
+    name: "Писанка 9",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -778,15 +570,8 @@ export const products: Product[] = [
     image: pysanka91,
     images: [pysanka91, pysanka92, pysanka93],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -795,8 +580,7 @@ export const products: Product[] = [
   {
     id: "33",
     slug: "pysanka-10",
-    name: "Pysanka 10",
-    nameUk: "Писанка 10",
+    name: "Писанка 10",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -804,15 +588,8 @@ export const products: Product[] = [
     image: pysanka101,
     images: [pysanka101, pysanka102, pysanka103],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -821,8 +598,7 @@ export const products: Product[] = [
   {
     id: "34",
     slug: "pysanka-11",
-    name: "Pysanka 11",
-    nameUk: "Писанка 11",
+    name: "Писанка 11",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -830,15 +606,8 @@ export const products: Product[] = [
     image: pysanka111,
     images: [pysanka111, pysanka112, pysanka113],
     description:
-      "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
       "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],
@@ -847,8 +616,7 @@ export const products: Product[] = [
   {
     id: "35",
     slug: "pysanka-12",
-    name: "Pysanka 12",
-    nameUk: "Писанка 12",
+    name: "Писанка 12",
     price: 300,
     currency: "₴",
     category: "pysanky",
@@ -856,15 +624,8 @@ export const products: Product[] = [
     image: pysanka121,
     images: [pysanka121, pysanka122, pysanka123],
     description:
-        "Traditional pysanka made on a blown chicken egg with food-safe dye using wax-resist technique.",
-    descriptionUk:
         "Писанка, виконана на видутому курячому яйці харчовими барвниками у восковій техніці.",
     details: [
-      "Material: Blown chicken egg",
-      "Coloring: Food-safe dye",
-      "Technique: Wax-resist",
-    ],
-    detailsUk: [
       "Матеріали: видуте куряче яйце, барвник харчовий",
       "Техніка виконання: воскова",
     ],

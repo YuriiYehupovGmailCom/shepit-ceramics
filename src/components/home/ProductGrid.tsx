@@ -42,14 +42,14 @@ function ProductCard({ product }: { product: typeof products[number] }) {
       <div className="aspect-square overflow-hidden bg-muted rounded-sm mb-3">
         <img
           src={product.image}
-          alt={product.nameUk}
+          alt={product.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
       </div>
 
       <h3 className="font-serif text-sm md:text-base font-medium text-foreground group-hover:text-primary transition-colors">
-        {product.nameUk}
+        {product.name}
       </h3>
       <p className="text-sm font-medium text-foreground mt-1">
         {product.price} {product.currency}

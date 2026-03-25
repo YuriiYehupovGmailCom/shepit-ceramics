@@ -48,13 +48,13 @@ const CartDrawer = () => {
                 <div key={product.id} className="flex gap-4">
                   <img
                     src={product.image}
-                    alt={product.nameUk}
+                    alt={product.name}
                     className="w-20 h-20 object-cover rounded-sm bg-muted"
                   />
 
                   <div className="flex-1 min-w-0">
                     <h4 className="font-serif text-sm font-medium truncate">
-                      {product.nameUk}
+                      {product.name}
                     </h4>
                     <p className="text-sm font-medium mt-1">
                       {product.price} {product.currency}

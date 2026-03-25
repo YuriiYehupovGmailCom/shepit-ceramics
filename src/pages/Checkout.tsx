@@ -244,7 +244,7 @@ const Checkout = () => {
     const orderItems = items
       .map((item, index) => {
         const lineTotal = item.product.price * item.quantity;
-        return `${index + 1}. ${item.product.nameUk} — ${item.quantity} x ${item.product.price} ${item.product.currency} = ${lineTotal} ${item.product.currency}`;
+        return `${index + 1}. ${item.product.name} — ${item.quantity} x ${item.product.price} ${item.product.currency} = ${lineTotal} ${item.product.currency}`;
       })
       .join("\n");
 
@@ -511,10 +511,10 @@ const Checkout = () => {
                   {items.map((item) => (
                     <div key={item.product.id} className="flex gap-3">
                       <div className="w-16 h-16 bg-muted overflow-hidden rounded-sm flex-shrink-0">
-                        <img src={item.product.image} alt={item.product.nameUk} className="w-full h-full object-cover" />
+                        <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground truncate">{item.product.nameUk}</p>
+                        <p className="text-sm font-medium text-foreground truncate">{item.product.name}</p>
                         <p className="text-sm text-muted-foreground">{item.product.price} {item.product.currency}</p>
                         <div className="flex items-center gap-2 mt-1">
                           <button type="button" onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">

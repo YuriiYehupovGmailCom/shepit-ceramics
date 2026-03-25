@@ -106,7 +106,7 @@ const ProductDetail = () => {
             >
               <img
                 src={product.images[selectedImageIndex]}
-                alt={`${product.nameUk} — фото ${selectedImageIndex + 1}`}
+                alt={`${product.name} — фото ${selectedImageIndex + 1}`}
                 className="w-full h-full object-cover transition-opacity duration-300"
               />
 
@@ -178,7 +178,7 @@ const ProductDetail = () => {
               {product.categoryUk}
             </p>
             <h1 className="font-serif text-3xl md:text-4xl font-light text-foreground mb-1">
-              {product.nameUk}
+              {product.name}
             </h1>
             <p className="text-xl font-medium text-foreground mb-6">
               {product.price} {product.currency}
@@ -187,11 +187,11 @@ const ProductDetail = () => {
             <Separator className="mb-6" />
 
             <p className="text-muted-foreground leading-relaxed mb-6">
-              {product.descriptionUk}
+              {product.description}
             </p>
 
             <ul className="space-y-1 mb-8">
-              {product.detailsUk.map((detail, i) => (
+              {product.details.map((detail, i) => (
                 <li key={i} className="text-sm text-muted-foreground">
                   • {detail}
                 </li>
