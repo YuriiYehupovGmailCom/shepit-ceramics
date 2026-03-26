@@ -19,7 +19,6 @@ import chokerRedWhite1 from "@/assets/choker-red-white-1.png";
 import chokerRedWhite2 from "@/assets/choker-red-white-2.png";
 import ceramicEarringsRedWhite1 from "@/assets/ceramic-earrings-red-white-1.png";
 import ceramicEarringsBlueWhiteSquare from "@/assets/ceramic-earrings-blue-white-square.png";
-import ptashkaWhite1 from "@/assets/ptashka-white-1.png";
 import ptashkaBlack1 from "@/assets/ptashka-black-1.png";
 import ptashkaGrey1 from "@/assets/ptashka-grey-1.png";
 import ptashkaBrown2 from "@/assets/ptashka-brown-2.png";
@@ -289,25 +288,6 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: "15",
-    slug: "ptashka-white",
-    name: "Керамічна підвіска «Пташка біла»",
-    price: 300,
-    currency: "₴",
-    category: "pendants",
-    categoryUk: "Підвіски",
-    image: ptashkaWhite1,
-    images: [ptashkaWhite1],
-    description:
-      "Ніжна керамічна підвіска у формі пташки, виготовлена з бежевої глини та вкрита білою поливою.",
-    details: [
-      "Матеріал: бежева глина",
-      "Полива: біла",
-      "Розмір: 3.5х3.7 см",
-    ],
-    inStock: true,
-  },
-  {
     id: "16",
     slug: "ptashka-black",
     name: "Керамічна підвіска «Пташка чорна»",
@@ -386,7 +366,7 @@ export const products: Product[] = [
   {
     id: "20",
     slug: "ptashka-trident",
-    name: "Керамічна підвіска «Пташка з тризубом»",
+    name: "Керамічна підвіска «Пташка біла»",
     price: 300,
     currency: "₴",
     category: "pendants",
@@ -394,7 +374,7 @@ export const products: Product[] = [
     image: ptashkaTrident,
     images: [ptashkaTrident],
     description:
-      "Керамічна підвіска «Пташка з тризубом». Виготовлена з бежевої глини та вкрита білою поливою.",
+      "Керамічна підвіска «Пташка з біла». Виготовлена з бежевої глини та вкрита білою поливою.",
     details: [
       "Матеріал: бежева глина",
       "Полива: біла",
