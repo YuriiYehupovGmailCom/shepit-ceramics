@@ -24,8 +24,7 @@ const About = () => {
             Про Shepit Ceramics
           </h1>
           <p className="text-muted-foreground max-w-2xl leading-relaxed">
-            Колись у мене була мрія про власну керамічну майстерню. Це моя спроба знайти свій власний шлях,
-            робити щось, що мені подобається і заробляти цим собі на життя.
+            Шепіт - це маленька майстерня, яка знаходиться у с. Малий Березний, Закарпатської області, де кожна прикраса створюється вручну.
           </p>
         </div>
 
@@ -39,16 +38,10 @@ const About = () => {
 
         <div ref={storyRef} className="fade-up grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="font-serif text-2xl font-light text-foreground mb-4">
-              Майстерня
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Моя мрія здійснилась у 2024 році. Майстерня розташована в Малому Березному, Закарпаття.
-            </p>
             <p className="text-muted-foreground leading-relaxed">
-              Глазурі створюються з натуральних пігментів — заліза, міді, кобальту —
-              змішаних у малих партіях. Результат — колір, що виглядає живим,
-              ніколи штучним.
+              Шепіт - це керамічні прикраси, кожна з яких ліпиться вручну зі шматка глини, випалюється при температурі понад 1000ʼС,
+              розмальовується кольоровими поливами і проходить другий випал, деякі з прикрас ще проходять процес молочіння,
+              який надає кераміці унікального бежево-коричневого відтінку.
             </p>
           </div>
           <div className="aspect-[3/4] overflow-hidden rounded-sm">
@@ -58,26 +51,6 @@ const About = () => {
               className="w-full h-full object-cover"
             />
           </div>
-        </div>
-
-        <div className="max-w-2xl">
-          <h2 className="font-serif text-2xl font-light text-foreground mb-4">
-            Цінності
-          </h2>
-          <ul className="space-y-3 text-muted-foreground leading-relaxed">
-            <li>
-              <strong className="text-foreground">Ручна робота, а не масове виробництво.</strong>{" "}
-              Кожна прикраса формується індивідуально, без використання форм.
-            </li>
-            <li>
-              <strong className="text-foreground">Екологічні матеріали.</strong>{" "}
-              Місцева глина, натуральні глазурі, мінімальне пакування з переробленого паперу.
-            </li>
-            <li>
-              <strong className="text-foreground">Збереження культури.</strong>{" "}
-              Дизайни вшановують традиційні українські керамічні мотиви, водночас приймаючи сучасну форму.
-            </li>
-          </ul>
         </div>
       </main>
 

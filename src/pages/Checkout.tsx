@@ -264,7 +264,7 @@ const Checkout = () => {
     payload.append("Товари", orderItems);
     payload.append("Кількість позицій", String(items.length));
     payload.append("Сума замовлення", `${totalPrice} ₴`);
-    payload.append("Спосіб оплати", "Оплата при отриманні (накладений платіж)");
+    payload.append("Спосіб оплати", "Оплата на рахунок ФОП");
     payload.append("Спосіб доставки", "Нова пошта");
 
     if (form.email) {
@@ -560,7 +560,7 @@ const Checkout = () => {
                 ) : null}
 
                 <p className="text-xs text-muted-foreground mt-3 text-center">
-                  Оплата при отриманні (накладений платіж)
+                  Оплата на рахунок ФОП
                 </p>
               </div>
             </div>

@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="font-serif text-lg tracking-widest uppercase text-foreground mb-4">
-              Shepit
+              Shepit Ceramics
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Авторські керамічні прикраси, засновані на українській ремісничій
@@ -62,7 +62,7 @@ const Footer = () => {
               </h4>
               <ul className="space-y-2">
                 {[
-                  { label: "Про Shepit", href: "/about" },
+                  { label: "Про Shepit Ceramics", href: "/about" },
                   { label: "Догляд", href: "/care" },
                   { label: "Доставка", href: "/delivery" },
                 ].map((link) => (

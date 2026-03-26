@@ -102,7 +102,6 @@ const CartDrawer = () => {
                 Оформити замовлення
               </Button>
               <p className="text-xs text-center text-muted-foreground">
-                Доставка розраховується при оформленні
               </p>
             </div>
           </>
