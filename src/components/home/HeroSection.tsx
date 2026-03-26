@@ -23,9 +23,7 @@ const HeroSection = () => {
           Кераміка ручної роботи
         </p>
         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light leading-[1.1] text-foreground mb-6">
-          Шепіт – це щось між <em className="font-light italic"> тишею</em>
-          <br />
-          і шумом
+          Шепіт – це щось між <em className="font-light italic"> тишею</em> і шумом
         </h1>
         <div className="max-w-xl mb-8 space-y-4 text-muted-foreground leading-relaxed">
           <p>
