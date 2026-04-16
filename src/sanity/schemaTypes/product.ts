@@ -1,16 +1,5 @@
 import { defineField, defineType } from "sanity";
 
-const categoryOptions = [
-  { title: "Чокери", value: "chokers" },
-  { title: "Підвіски", value: "pendants" },
-  { title: "Сережки", value: "earrings" },
-  { title: "Горнята", value: "mugs" },
-  { title: "Ялинкові прикраси", value: "xmas" },
-  { title: "Вітряні дзвоники", value: "windchimes" },
-  { title: "Набори", value: "sets" },
-  { title: "Писанки", value: "pysanky" },
-];
-
 export const productType = defineType({
   name: "product",
   title: "Products",
@@ -45,11 +34,8 @@ export const productType = defineType({
     defineField({
       name: "category",
       title: "Категорія",
-      type: "string",
-      options: {
-        list: categoryOptions,
-        layout: "dropdown",
-      },
+      type: "reference",
+      to: [{ type: "category" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -107,16 +93,12 @@ export const productType = defineType({
   preview: {
     select: {
       title: "name",
-      subtitle: "category",
+      categoryTitle: "category.title",
       media: "mainImage",
       price: "price",
       currency: "currency",
     },
-    prepare({ title, subtitle, media, price, currency }) {
-      const categoryTitle =
-        categoryOptions.find((option) => option.value === subtitle)?.title ||
-        subtitle;
-
+    prepare({ title, categoryTitle, media, price, currency }) {
       return {
         title,
         subtitle:

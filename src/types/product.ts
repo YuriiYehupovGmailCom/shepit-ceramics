@@ -1,15 +1,4 @@
-export const categoryLabels = {
-  chokers: "Чокери",
-  pendants: "Підвіски",
-  earrings: "Сережки",
-  mugs: "Горнята",
-  xmas: "Ялинкові прикраси",
-  windchimes: "Вітряні дзвоники",
-  sets: "Набори",
-  pysanky: "Писанки",
-} as const;
-
-export type ProductCategory = keyof typeof categoryLabels;
+export type ProductCategory = string;
 
 export interface Product {
   id: string;

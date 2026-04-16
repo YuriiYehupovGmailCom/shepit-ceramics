@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { sanityClient } from "./client";
-import { categoryLabels, Product, ProductCategory } from "@/types/product";
+import { Product } from "@/types/product";
+
+export type { Product };
+
+type ProductCategory = string;
 
 interface SanityProductRecord {
   _id: string;
@@ -8,7 +12,12 @@ interface SanityProductRecord {
   name: string;
   price: number;
   currency?: string;
-  category: ProductCategory;
+  category: {
+    _type: "reference";
+    _ref: string;
+    title?: string;
+    slug?: { current: string };
+  };
   description?: string;
   details?: string[];
   inStock?: boolean;
@@ -22,7 +31,7 @@ const productProjection = `{
   name,
   price,
   currency,
-  category,
+  category->{_id, title, slug},
   description,
   details,
   inStock,
@@ -49,14 +58,17 @@ function mapProduct(record: SanityProductRecord): Product {
       ? [record.mainImage]
       : [];
 
+  const categorySlug = record.category?.slug?.current || "";
+  const categoryLabel = record.category?.title || "";
+
   return {
     id: record._id,
     slug: record.slug,
     name: record.name,
     price: record.price,
     currency: record.currency || "₴",
-    category: record.category,
-    categoryUk: categoryLabels[record.category] || record.category,
+    category: categorySlug as ProductCategory,
+    categoryUk: categoryLabel,
     image: record.mainImage || images[0] || "",
     images,
     description: record.description || "",

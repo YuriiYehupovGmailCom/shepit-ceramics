@@ -4,8 +4,11 @@
 
 import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
+import { useCategories } from "@/lib/sanity/categories";
 
 const Footer = () => {
+  const { data: categories = [] } = useCategories();
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-16 py-16">
@@ -38,19 +41,13 @@ const Footer = () => {
                 Магазин
               </h4>
               <ul className="space-y-2">
-                {[
-                  { label: "Чокери", href: "/collection" },
-                  { label: "Підвіски", href: "/collection" },
-                  { label: "Сережки", href: "/collection" },
-                  { label: "Писанки", href: "/collection" },
-                  { label: "Ялинкові прикраси", href: "/collection" },
-                ].map((item) => (
-                  <li key={item.label}>
+                {categories.map((cat) => (
+                  <li key={cat._id}>
                     <Link
-                      to={item.href}
+                      to={`/collection?category=${cat.slug}`}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {item.label}
+                      {cat.title}
                     </Link>
                   </li>
                 ))}

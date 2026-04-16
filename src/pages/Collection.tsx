@@ -2,36 +2,39 @@
  * Collection — Full product listing page with category filter.
  */
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import { useProducts } from "@/lib/sanity/products";
-import { categoryLabels, ProductCategory } from "@/types/product";
-
-const categories = [
-  { key: "all", label: "Усі" },
-  { key: "chokers", label: categoryLabels.chokers },
-  { key: "pendants", label: categoryLabels.pendants },
-  { key: "earrings", label: categoryLabels.earrings },
-  { key: "sets", label: categoryLabels.sets },
-  { key: "pysanky", label: categoryLabels.pysanky },
-  { key: "xmas", label: categoryLabels.xmas },
-  { key: "mugs", label: categoryLabels.mugs },
-  { key: "windchimes", label: categoryLabels.windchimes },
-] as const;
+import { useCategories } from "@/lib/sanity/categories";
 
 const Collection = () => {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [searchParams] = useSearchParams();
+  const urlCategory = searchParams.get("category") || "all";
+  const [activeCategory, setActiveCategory] = useState<string>(urlCategory);
   const fadeRef = useScrollFadeIn();
-  const { data: products = [], isLoading, isError } = useProducts();
+  const { data: products = [], isLoading: productsLoading, isError: productsError } = useProducts();
+  const { data: categories = [], isLoading: categoriesLoading } = useCategories();
+
+  useEffect(() => {
+    const cat = searchParams.get("category");
+    if (cat) {
+      setActiveCategory(cat);
+    }
+  }, [searchParams]);
 
   const filtered =
     activeCategory === "all"
       ? products
-      : products.filter((p) => p.category === activeCategory as ProductCategory);
+      : products.filter((p) => p.category === activeCategory);
+
+  const allCategories = [
+    { key: "all", label: "Усі" },
+    ...categories.map((cat) => ({ key: cat.slug, label: cat.title })),
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -49,33 +52,35 @@ const Collection = () => {
         </div>
 
         {/* Category filters */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-1.5 text-sm rounded-sm border transition-colors ${
-                activeCategory === cat.key
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        {!categoriesLoading && (
+          <div className="flex flex-wrap gap-2 mb-10">
+            {allCategories.map((cat) => (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`px-4 py-1.5 text-sm rounded-sm border transition-colors ${
+                  activeCategory === cat.key
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        )}
 
-        {isLoading && (
+        {productsLoading && (
           <p className="text-sm text-muted-foreground">Завантаження товарів...</p>
         )}
 
-        {isError && (
+        {productsError && (
           <p className="text-sm text-destructive">
             Не вдалося завантажити каталог із Sanity.
           </p>
         )}
 
-        {!isLoading && !isError && (
+        {!productsLoading && !productsError && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {filtered.map((product) => (
               <Link
