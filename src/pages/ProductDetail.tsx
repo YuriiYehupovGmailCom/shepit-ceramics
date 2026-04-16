@@ -32,7 +32,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     setSelectedImageIndex(0);
-  }, [product?.id]);
+  }, [product?.slug]);
 
   // Navigate to next/previous image (wraps around)
   const goToImage = useCallback(
@@ -193,7 +193,7 @@ const ProductDetail = () => {
               {product.name}
             </h1>
             <p className="text-xl font-medium text-foreground mb-6">
-              {product.price} {product.currency}
+              {product.price} ₴
             </p>
 
             <Separator className="mb-6" />
@@ -233,7 +233,7 @@ const ProductDetail = () => {
                 onClick={handleAddToCart}
                 className="flex-1 bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider text-base md:text-lg py-6"
               >
-                Додати в кошик — {product.price * quantity} {product.currency}
+                Додати в кошик — {product.price * quantity} ₴
               </Button>
             </div>
           </div>

@@ -84,7 +84,7 @@ const Collection = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {filtered.map((product) => (
               <Link
-                key={product.id}
+                key={product.slug}
                 to={`/product/${product.slug}`}
                 className="group block"
               >
@@ -100,7 +100,7 @@ const Collection = () => {
                   {product.name}
                 </h3>
                 <p className="text-sm font-medium text-foreground mt-1">
-                  {product.price} {product.currency}
+                  {product.price} ₴
                 </p>
               </Link>
             ))}

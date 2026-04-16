@@ -35,7 +35,7 @@ const ProductGrid = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.slug} product={product} />
         ))}
       </div>
     </section>
@@ -64,7 +64,7 @@ function ProductCard({ product }: { product: Product }) {
         {product.name}
       </h3>
       <p className="text-sm font-medium text-foreground mt-1">
-        {product.price} {product.currency}
+        {product.price} ₴
       </p>
     </Link>
   );

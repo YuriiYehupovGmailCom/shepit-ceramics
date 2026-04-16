@@ -25,29 +25,11 @@ export const productType = defineType({
       validation: (rule) => rule.required().min(0),
     }),
     defineField({
-      name: "currency",
-      title: "Валюта",
-      type: "string",
-      initialValue: "₴",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "category",
       title: "Категорія",
       type: "reference",
       to: [{ type: "category" }],
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "storefrontEnabled",
-      title: "Показувати на сайті",
-      type: "boolean",
-      initialValue: true,
-    }),
-    defineField({
-      name: "sortOrder",
-      title: "Порядок у каталозі",
-      type: "number",
     }),
     defineField({
       name: "description",
@@ -76,19 +58,6 @@ export const productType = defineType({
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
     }),
-    defineField({
-      name: "inStock",
-      title: "В наявності",
-      type: "boolean",
-      initialValue: true,
-    }),
-    defineField({
-      name: "legacyId",
-      title: "Legacy ID",
-      type: "string",
-      readOnly: true,
-      hidden: true,
-    }),
   ],
   preview: {
     select: {
@@ -96,14 +65,13 @@ export const productType = defineType({
       categoryTitle: "category.title",
       media: "mainImage",
       price: "price",
-      currency: "currency",
     },
-    prepare({ title, categoryTitle, media, price, currency }) {
+    prepare({ title, categoryTitle, media, price }) {
       return {
         title,
         subtitle:
           price !== undefined
-            ? `${categoryTitle || "Без категорії"} • ${price} ${currency || ""}`.trim()
+            ? `${categoryTitle || "Без категорії"} • ${price} ₴`.trim()
             : categoryTitle,
         media,
       };

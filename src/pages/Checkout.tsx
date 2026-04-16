@@ -244,7 +244,7 @@ const Checkout = () => {
     const orderItems = items
       .map((item, index) => {
         const lineTotal = item.product.price * item.quantity;
-        return `${index + 1}. ${item.product.name} — ${item.quantity} x ${item.product.price} ${item.product.currency} = ${lineTotal} ${item.product.currency}`;
+        return `${index + 1}. ${item.product.name} — ${item.quantity} x ${item.product.price} ₴ = ${lineTotal} ₴`;
       })
       .join("\n");
 
@@ -509,22 +509,22 @@ const Checkout = () => {
 
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.product.id} className="flex gap-3">
+                    <div key={item.product.slug} className="flex gap-3">
                       <div className="w-16 h-16 bg-muted overflow-hidden rounded-sm flex-shrink-0">
                         <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-foreground truncate">{item.product.name}</p>
-                        <p className="text-sm text-muted-foreground">{item.product.price} {item.product.currency}</p>
+                        <p className="text-sm text-muted-foreground">{item.product.price} ₴</p>
                         <div className="flex items-center gap-2 mt-1">
-                          <button type="button" onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
+                          <button type="button" onClick={() => updateQuantity(item.product.slug, item.quantity - 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
                             <Minus size={12} />
                           </button>
                           <span className="text-sm w-6 text-center">{item.quantity}</span>
-                          <button type="button" onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
+                          <button type="button" onClick={() => updateQuantity(item.product.slug, item.quantity + 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
                             <Plus size={12} />
                           </button>
-                          <button type="button" onClick={() => removeFromCart(item.product.id)} className="ml-auto text-muted-foreground hover:text-foreground">
+                          <button type="button" onClick={() => removeFromCart(item.product.slug)} className="ml-auto text-muted-foreground hover:text-foreground">
                             <Trash2 size={14} />
                           </button>
                         </div>

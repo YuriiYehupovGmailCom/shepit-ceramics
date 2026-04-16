@@ -45,7 +45,7 @@ const CartDrawer = () => {
           <>
             <div className="flex-1 overflow-y-auto py-4 space-y-4">
               {items.map(({ product, quantity }) => (
-                <div key={product.id} className="flex gap-4">
+                <div key={product.slug} className="flex gap-4">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -57,12 +57,12 @@ const CartDrawer = () => {
                       {product.name}
                     </h4>
                     <p className="text-sm font-medium mt-1">
-                      {product.price} {product.currency}
+                      {product.price} ₴
                     </p>
 
                     <div className="flex items-center gap-2 mt-2">
                       <button
-                        onClick={() => updateQuantity(product.id, quantity - 1)}
+                        onClick={() => updateQuantity(product.slug, quantity - 1)}
                         className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted transition-colors"
                         aria-label="Зменшити кількість"
                       >
@@ -70,14 +70,14 @@ const CartDrawer = () => {
                       </button>
                       <span className="text-sm w-6 text-center">{quantity}</span>
                       <button
-                        onClick={() => updateQuantity(product.id, quantity + 1)}
+                        onClick={() => updateQuantity(product.slug, quantity + 1)}
                         className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted transition-colors"
                         aria-label="Збільшити кількість"
                       >
                         <Plus size={12} />
                       </button>
                       <button
-                        onClick={() => removeFromCart(product.id)}
+                        onClick={() => removeFromCart(product.slug)}
                         className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
                         aria-label="Видалити"
                       >

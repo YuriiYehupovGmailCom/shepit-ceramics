@@ -9,8 +9,8 @@
  *
  * ACTIONS:
  * - addToCart(product)    → adds item or increments quantity
- * - removeFromCart(id)    → removes item entirely
- * - updateQuantity(id, q) → sets specific quantity (removes if 0)
+ * - removeFromCart(slug) → removes item entirely
+ * - updateQuantity(slug, q) → sets specific quantity (removes if 0)
  * - clearCart()           → empties the cart
  * - toggleCartOpen()      → opens/closes the cart drawer
  */
@@ -18,7 +18,6 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Product } from "@/types/product";
 
-// A cart item is a product plus a quantity
 export interface CartItem {
   product: Product;
   quantity: number;
@@ -28,8 +27,8 @@ interface CartContextType {
   items: CartItem[];
   isOpen: boolean;
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  removeFromCart: (productSlug: string) => void;
+  updateQuantity: (productSlug: string, quantity: number) => void;
   clearCart: () => void;
   toggleCartOpen: () => void;
   setCartOpen: (open: boolean) => void;
@@ -43,35 +42,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Add a product — if it's already in the cart, increment quantity
   const addToCart = (product: Product) => {
     setItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
+      const existing = prev.find((item) => item.product.slug === product.slug);
       if (existing) {
         return prev.map((item) =>
-          item.product.id === product.id
+          item.product.slug === product.slug
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
       return [...prev, { product, quantity: 1 }];
     });
-    // Open the cart drawer to give feedback
     setIsOpen(true);
   };
 
-  const removeFromCart = (productId: string) => {
-    setItems((prev) => prev.filter((item) => item.product.id !== productId));
+  const removeFromCart = (productSlug: string) => {
+    setItems((prev) => prev.filter((item) => item.product.slug !== productSlug));
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (productSlug: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(productId);
+      removeFromCart(productSlug);
       return;
     }
     setItems((prev) =>
       prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity } : item
+        item.product.slug === productSlug ? { ...item, quantity } : item
       )
     );
   };
@@ -80,7 +77,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const toggleCartOpen = () => setIsOpen((prev) => !prev);
   const setCartOpen = (open: boolean) => setIsOpen(open);
 
-  // Derived values
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
@@ -107,10 +103,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 }
 
-/**
- * Custom hook to access cart state.
- * Must be used inside a <CartProvider>.
- */
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
