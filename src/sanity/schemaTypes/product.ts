@@ -58,6 +58,13 @@ export const productType = defineType({
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
     }),
+    defineField({
+      name: "stockQty",
+      title: "Кількість на складі",
+      type: "number",
+      initialValue: 1,
+      validation: (rule) => rule.required().min(1),
+    }),
   ],
   preview: {
     select: {
@@ -65,13 +72,14 @@ export const productType = defineType({
       categoryTitle: "category.title",
       media: "mainImage",
       price: "price",
+      stockQty: "stockQty",
     },
-    prepare({ title, categoryTitle, media, price }) {
+    prepare({ title, categoryTitle, media, price, stockQty }) {
       return {
         title,
         subtitle:
           price !== undefined
-            ? `${categoryTitle || "Без категорії"} • ${price} ₴`.trim()
+            ? `${categoryTitle || "Без категорії"} • ${price} ₴${stockQty ? ` • В наявності: ${stockQty}` : ""}`.trim()
             : categoryTitle,
         media,
       };

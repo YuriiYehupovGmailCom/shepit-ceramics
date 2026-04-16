@@ -211,27 +211,31 @@ const ProductDetail = () => {
             </ul>
 
             <div className="flex items-center gap-4 mb-4">
-              <div className="flex items-center border border-border rounded-sm">
-                <button
-                  onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="px-3 py-2 hover:bg-muted transition-colors"
-                  aria-label="Зменшити"
-                >
-                  <Minus size={14} />
-                </button>
-                <span className="px-4 py-2 text-sm font-medium">{quantity}</span>
-                <button
-                  onClick={() => setQuantity((q) => q + 1)}
-                  className="px-3 py-2 hover:bg-muted transition-colors"
-                  aria-label="Збільшити"
-                >
-                  <Plus size={14} />
-                </button>
-              </div>
+              {product.stockQty > 1 && (
+                <div className="flex items-center border border-border rounded-sm">
+                  <button
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    className="px-3 py-2 hover:bg-muted transition-colors"
+                    aria-label="Зменшити"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <span className="px-4 py-2 text-sm font-medium">{quantity}</span>
+                  <button
+                    onClick={() => setQuantity((q) => Math.min(product.stockQty, q + 1))}
+                    className="px-3 py-2 hover:bg-muted transition-colors"
+                    aria-label="Збільшити"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              )}
 
               <Button
                 onClick={handleAddToCart}
-                className="flex-1 bg-primary text-primary-foreground hover:bg-primary-hover font-serif tracking-wider text-base md:text-lg py-6"
+                className={product.stockQty > 1 ? "flex-1" : "w-full"}
+                variant="default"
+                size="lg"
               >
                 Додати в кошик — {product.price * quantity} ₴
               </Button>

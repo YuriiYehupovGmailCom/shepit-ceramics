@@ -10,4 +10,5 @@ export interface Product {
   images: string[];
   description: string;
   details: string[];
+  stockQty: number;
 }

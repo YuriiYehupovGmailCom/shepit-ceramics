@@ -264,7 +264,7 @@ const Checkout = () => {
     payload.append("Товари", orderItems);
     payload.append("Кількість позицій", String(items.length));
     payload.append("Сума замовлення", `${totalPrice} ₴`);
-    payload.append("Спосіб оплати", "Оплата на рахунок ФОП");
+    payload.append("Спосіб оплати", "Оплата на картку ФОП");
     payload.append("Спосіб доставки", "Нова пошта");
 
     if (form.email) {
@@ -509,25 +509,45 @@ const Checkout = () => {
 
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
-                    <div key={item.product.slug} className="flex gap-3">
-                      <div className="w-16 h-16 bg-muted overflow-hidden rounded-sm flex-shrink-0">
+                    <div key={item.product.slug} className="flex items-center gap-3">
+                      <div className="w-14 h-14 bg-muted overflow-hidden rounded-sm flex-shrink-0">
                         <img src={item.product.image} alt={item.product.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-foreground truncate">{item.product.name}</p>
-                        <p className="text-sm text-muted-foreground">{item.product.price} ₴</p>
-                        <div className="flex items-center gap-2 mt-1">
-                          <button type="button" onClick={() => updateQuantity(item.product.slug, item.quantity - 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
-                            <Minus size={12} />
-                          </button>
-                          <span className="text-sm w-6 text-center">{item.quantity}</span>
-                          <button type="button" onClick={() => updateQuantity(item.product.slug, item.quantity + 1)} className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted">
-                            <Plus size={12} />
-                          </button>
-                          <button type="button" onClick={() => removeFromCart(item.product.slug)} className="ml-auto text-muted-foreground hover:text-foreground">
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-medium text-foreground truncate flex-1">{item.product.name}</p>
+                          {item.product.stockQty > 1 && (
+                            <div className="flex items-center border border-border rounded-sm flex-shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => updateQuantity(item.product.slug, item.quantity - 1)}
+                                disabled={item.quantity <= 1}
+                                className="w-7 h-7 flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-50"
+                                aria-label="Зменшити"
+                              >
+                                <Minus size={12} />
+                              </button>
+                              <span className="px-1 text-xs min-w-[20px] text-center">{item.quantity}</span>
+                              <button
+                                type="button"
+                                onClick={() => updateQuantity(item.product.slug, item.quantity + 1)}
+                                disabled={item.quantity >= item.product.stockQty}
+                                className="w-7 h-7 flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-50"
+                                aria-label="Збільшити"
+                              >
+                                <Plus size={12} />
+                              </button>
+                            </div>
+                          )}
+                          <button
+                            type="button"
+                            onClick={() => removeFromCart(item.product.slug)}
+                            className="w-7 h-7 flex items-center justify-center text-muted-foreground hover:text-destructive transition-colors flex-shrink-0"
+                          >
                             <Trash2 size={14} />
                           </button>
                         </div>
+                        <p className="text-sm text-muted-foreground mt-0.5">{item.product.price} ₴</p>
                       </div>
                     </div>
                   ))}
@@ -560,7 +580,7 @@ const Checkout = () => {
                 ) : null}
 
                 <p className="text-xs text-muted-foreground mt-3 text-center">
-                  Оплата на рахунок ФОП
+                  Оплата на картку ФОП
                 </p>
               </div>
             </div>

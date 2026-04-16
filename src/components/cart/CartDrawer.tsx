@@ -23,7 +23,6 @@ const CartDrawer = () => {
     updateQuantity,
     removeFromCart,
     totalPrice,
-    totalItems,
   } = useCart();
 
   return (
@@ -31,7 +30,7 @@ const CartDrawer = () => {
       <SheetContent className="w-full sm:max-w-md flex flex-col bg-background">
         <SheetHeader>
           <SheetTitle className="font-serif text-xl tracking-wide">
-            Ваш кошик ({totalItems})
+            Ваш кошик ({items.length})
           </SheetTitle>
         </SheetHeader>
 
@@ -45,45 +44,50 @@ const CartDrawer = () => {
           <>
             <div className="flex-1 overflow-y-auto py-4 space-y-4">
               {items.map(({ product, quantity }) => (
-                <div key={product.slug} className="flex gap-4">
+                <div key={product.slug} className="flex items-center gap-3">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-20 h-20 object-cover rounded-sm bg-muted"
+                    className="w-16 h-16 object-cover rounded-sm bg-muted flex-shrink-0"
                   />
 
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-serif text-sm font-medium truncate">
-                      {product.name}
-                    </h4>
-                    <p className="text-sm font-medium mt-1">
-                      {product.price} ₴
-                    </p>
-
-                    <div className="flex items-center gap-2 mt-2">
-                      <button
-                        onClick={() => updateQuantity(product.slug, quantity - 1)}
-                        className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted transition-colors"
-                        aria-label="Зменшити кількість"
-                      >
-                        <Minus size={12} />
-                      </button>
-                      <span className="text-sm w-6 text-center">{quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(product.slug, quantity + 1)}
-                        className="w-6 h-6 flex items-center justify-center border border-border rounded-sm hover:bg-muted transition-colors"
-                        aria-label="Збільшити кількість"
-                      >
-                        <Plus size={12} />
-                      </button>
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-serif text-sm font-medium truncate flex-1">
+                        {product.name}
+                      </h4>
+                      {product.stockQty > 1 && (
+                        <div className="flex items-center border border-border rounded-sm flex-shrink-0">
+                          <button
+                            onClick={() => updateQuantity(product.slug, quantity - 1)}
+                            disabled={quantity <= 1}
+                            className="w-7 h-7 flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-50"
+                            aria-label="Зменшити"
+                          >
+                            <Minus size={12} />
+                          </button>
+                          <span className="px-1 text-xs min-w-[20px] text-center">{quantity}</span>
+                          <button
+                            onClick={() => updateQuantity(product.slug, quantity + 1)}
+                            disabled={quantity >= product.stockQty}
+                            className="w-7 h-7 flex items-center justify-center hover:bg-muted transition-colors disabled:opacity-50"
+                            aria-label="Збільшити"
+                          >
+                            <Plus size={12} />
+                          </button>
+                        </div>
+                      )}
                       <button
                         onClick={() => removeFromCart(product.slug)}
-                        className="ml-auto text-muted-foreground hover:text-destructive transition-colors"
+                        className="w-7 h-7 flex items-center justify-center text-muted-foreground hover:text-destructive transition-colors flex-shrink-0"
                         aria-label="Видалити"
                       >
                         <Trash2 size={14} />
                       </button>
                     </div>
+                    <p className="text-sm font-medium text-muted-foreground mt-0.5">
+                      {product.price} ₴
+                    </p>
                   </div>
                 </div>
               ))}
@@ -101,8 +105,6 @@ const CartDrawer = () => {
               >
                 Оформити замовлення
               </Button>
-              <p className="text-xs text-center text-muted-foreground">
-              </p>
             </div>
           </>
         )}

@@ -20,6 +20,7 @@ interface SanityProductRecord {
   details?: string[];
   mainImage?: string;
   gallery?: string[];
+  stockQty?: number;
 }
 
 const productProjection = `{
@@ -30,7 +31,8 @@ const productProjection = `{
   description,
   details,
   "mainImage": mainImage.asset->url,
-  "gallery": gallery[].asset->url
+  "gallery": gallery[].asset->url,
+  stockQty
 }`;
 
 const productsQuery = `*[_type == "product"]|order(_createdAt desc)${productProjection}`;
@@ -61,6 +63,7 @@ function mapProduct(record: SanityProductRecord): Product {
     images,
     description: record.description || "",
     details: record.details || [],
+    stockQty: record.stockQty ?? 1,
   };
 }
 
