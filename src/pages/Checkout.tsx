@@ -244,7 +244,7 @@ const Checkout = () => {
     const orderItems = items
       .map((item, index) => {
         const lineTotal = item.product.price * item.quantity;
-        return `${index + 1}. ${item.product.name} — ${item.quantity} x ${item.product.price} ₴ = ${lineTotal} ₴`;
+        return `${index + 1}. ${item.product.name} (${item.product.slug}) — ${item.quantity} x ${item.product.price} ₴ = ${lineTotal} ₴`;
       })
       .join("\n");
 
