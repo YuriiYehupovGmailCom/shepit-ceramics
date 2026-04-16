@@ -5,10 +5,12 @@
 
 import { Link } from "react-router-dom";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
-import { products } from "@/data/products";
+import { useProducts } from "@/lib/sanity/products";
+import { Product } from "@/types/product";
 
 const ProductGrid = () => {
   const fadeRef = useScrollFadeIn();
+  const { data: products = [], isLoading, isError } = useProducts();
 
   return (
     <section className="px-6 md:px-16 py-20 max-w-7xl mx-auto">
@@ -21,6 +23,16 @@ const ProductGrid = () => {
         </p>
       </div>
 
+      {isLoading && (
+        <div className="text-sm text-muted-foreground">Завантаження колекції...</div>
+      )}
+
+      {isError && (
+        <div className="text-sm text-destructive">
+          Не вдалося завантажити товари з Sanity.
+        </div>
+      )}
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
@@ -30,7 +42,7 @@ const ProductGrid = () => {
   );
 };
 
-function ProductCard({ product }: { product: typeof products[number] }) {
+function ProductCard({ product }: { product: Product }) {
   const fadeRef = useScrollFadeIn<HTMLAnchorElement>();
 
   return (

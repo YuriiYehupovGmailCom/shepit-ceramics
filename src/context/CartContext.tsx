@@ -16,7 +16,7 @@
  */
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import { Product } from "@/data/products";
+import { Product } from "@/types/product";
 
 // A cart item is a product plus a quantity
 export interface CartItem {

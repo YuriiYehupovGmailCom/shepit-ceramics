@@ -9,7 +9,7 @@
  */
 
 import { useParams, Link } from "react-router-dom";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { ArrowLeft, Plus, Minus, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -17,11 +17,11 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
-import { getProductBySlug } from "@/data/products";
+import { useProduct } from "@/lib/sanity/products";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const product = getProductBySlug(slug || "");
+  const { data: product, isLoading, isError } = useProduct(slug);
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
@@ -29,6 +29,10 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+
+  useEffect(() => {
+    setSelectedImageIndex(0);
+  }, [product?.id]);
 
   // Navigate to next/previous image (wraps around)
   const goToImage = useCallback(
@@ -58,7 +62,15 @@ const ProductDetail = () => {
     touchEndX.current = null;
   };
 
-  if (!product) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <p className="text-sm text-muted-foreground">Завантаження товару...</p>
+      </div>
+    );
+  }
+
+  if (isError || !product) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
