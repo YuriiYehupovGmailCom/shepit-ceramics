@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
@@ -37,19 +38,27 @@ const Collection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-      <CartDrawer />
+    <>
+      <Helmet>
+        <title>Колекція керамічних прикрас — Shepit Ceramics</title>
+        <meta name="description" content="Повний каталог авторських керамічних прикрас ручної роботи: сережки, кулони, брошки та браслети. Обирайте унікальні прикраси з України." />
+        <meta property="og:title" content="Колекція керамічних прикрас — Shepit Ceramics" />
+        <meta property="og:description" content="Авторські керамічні прикраси ручної роботи з України." />
+        <link rel="canonical" href="https://shepit-ceramics.com/collection" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <Header />
+        <CartDrawer />
 
-      <main className="max-w-7xl mx-auto px-6 md:px-16 py-12">
-        <div ref={fadeRef} className="fade-up mb-10">
-          <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-2">
-            Колекція
-          </h1>
-          <p className="text-muted-foreground max-w-lg">
-            Перегляньте повний асортимент керамічних прикрас ручної роботи.
-          </p>
-        </div>
+        <main className="max-w-7xl mx-auto px-6 md:px-16 py-12">
+          <div ref={fadeRef} className="fade-up mb-10">
+            <h1 className="font-serif text-4xl md:text-5xl font-light text-foreground mb-2">
+              Колекція
+            </h1>
+            <p className="text-muted-foreground max-w-lg">
+              Перегляньте повний асортимент керамічних прикрас ручної роботи.
+            </p>
+          </div>
 
         {/* Category filters */}
         {!categoriesLoading && (
@@ -109,7 +118,8 @@ const Collection = () => {
       </main>
 
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@
 
 import { useParams, Link } from "react-router-dom";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Plus, Minus, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
@@ -94,6 +95,32 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {product && (
+        <Helmet>
+          <title>{product.name} — Shepit Ceramics</title>
+          <meta name="description" content={product.description || `${product.name} — керамічна прикраса ручної роботи`} />
+          <meta property="og:title" content={`${product.name} — Shepit Ceramics`} />
+          <meta property="og:description" content={product.description || `Керамічна прикраса ручної роботи`} />
+          <meta property="og:image" content={product.image} />
+          <meta property="og:type" content="product" />
+          <link rel="canonical" href={`https://shepit-ceramics.com/product/${product.slug}`} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": product.name,
+              "description": product.description,
+              "image": product.images,
+              "offers": {
+                "@type": "Offer",
+                "price": product.price,
+                "priceCurrency": "UAH",
+                "availability": product.stockQty > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+              }
+            })}
+          </script>
+        </Helmet>
+      )}
       <Header />
       <CartDrawer />
 

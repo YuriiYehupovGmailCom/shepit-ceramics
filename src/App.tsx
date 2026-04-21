@@ -17,6 +17,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
@@ -35,42 +36,44 @@ const queryClient = new QueryClient();
 const AdminStudio = lazy(() => import("./pages/AdminStudio"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <CartProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/collection" element={<Collection />} />
-            <Route path="/product/:slug" element={<ProductDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/care" element={<CareGuide />} />
-            <Route path="/delivery" element={<Delivery />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            <Route
-              path="/admin/*"
-              element={
-                <Suspense
-                  fallback={
-                    <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
-                      Завантаження адмінки...
-                    </div>
-                  }
-                >
-                  <AdminStudio />
-                </Suspense>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <CartProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/collection" element={<Collection />} />
+              <Route path="/product/:slug" element={<ProductDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/care" element={<CareGuide />} />
+              <Route path="/delivery" element={<Delivery />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              <Route
+                path="/admin/*"
+                element={
+                  <Suspense
+                    fallback={
+                      <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
+                        Завантаження адмінки...
+                      </div>
+                    }
+                  >
+                    <AdminStudio />
+                  </Suspense>
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
