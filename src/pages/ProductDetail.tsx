@@ -8,7 +8,7 @@
  * - On mobile, touch swipe gestures cycle through images.
  */
 
-import { useParams, Link } from "react-router-dom";
+import {useParams, Link, useNavigate, useLocation} from "react-router-dom";
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Plus, Minus, ChevronLeft, ChevronRight } from "lucide-react";
@@ -22,6 +22,9 @@ import { useProduct } from "@/lib/sanity/products";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const { data: product, isLoading, isError } = useProduct(slug);
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -34,6 +37,14 @@ const ProductDetail = () => {
   useEffect(() => {
     setSelectedImageIndex(0);
   }, [product?.slug]);
+
+  const handleBack = () => {
+    if (location.state?.from === "collection") {
+      navigate(-1);
+    } else {
+      navigate("/collection");
+    }
+  };
 
   // Navigate to next/previous image (wraps around)
   const goToImage = useCallback(
@@ -125,13 +136,10 @@ const ProductDetail = () => {
       <CartDrawer />
 
       <main className="max-w-7xl mx-auto px-6 md:px-16 py-8">
-        <Link
-          to="/collection"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
-        >
-          <ArrowLeft size={14} />
+        <button onClick={handleBack} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8 group">
+          <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
           Повернутися до колекції
-        </Link>
+        </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* ===== IMAGE GALLERY ===== */}

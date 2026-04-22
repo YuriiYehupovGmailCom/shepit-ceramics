@@ -13,28 +13,37 @@ import { useProducts } from "@/lib/sanity/products";
 import { useCategories } from "@/lib/sanity/categories";
 
 const Collection = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const urlCategory = searchParams.get("category") || "all";
   const [activeCategory, setActiveCategory] = useState<string>(urlCategory);
   const fadeRef = useScrollFadeIn();
   const { data: products = [], isLoading: productsLoading, isError: productsError } = useProducts();
   const { data: categories = [], isLoading: categoriesLoading } = useCategories();
 
+  const setCategory = (slug: string) => {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      if (slug === "all") {
+        next.delete("category");
+      } else {
+        next.set("category", slug);
+      }
+      return next;
+    });
+  };
+
   useEffect(() => {
-    const cat = searchParams.get("category");
-    if (cat) {
-      setActiveCategory(cat);
-    }
+    setActiveCategory(searchParams.get("category") || "all");
   }, [searchParams]);
 
-  const filtered =
+  const filteredProducts =
     activeCategory === "all"
       ? products
       : products.filter((p) => p.category === activeCategory);
 
   const allCategories = [
-    { key: "all", label: "Усі" },
-    ...categories.map((cat) => ({ key: cat.slug, label: cat.title })),
+    { slug: "all", title: "Усі" },
+    ...categories.map((cat) => ({ slug: cat.slug, title: cat.title })),
   ];
 
   return (
@@ -65,15 +74,16 @@ const Collection = () => {
           <div className="flex flex-wrap gap-2 mb-10">
             {allCategories.map((cat) => (
               <button
-                key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
+                key={cat.slug}
+                type="button"
+                onClick={() => setCategory(cat.slug)}
                 className={`px-4 py-1.5 text-sm rounded-sm border transition-colors ${
-                  activeCategory === cat.key
+                  activeCategory === cat.slug
                     ? "bg-primary text-primary-foreground border-primary"
                     : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
                 }`}
               >
-                {cat.label}
+                {cat.title}
               </button>
             ))}
           </div>
@@ -91,10 +101,11 @@ const Collection = () => {
 
         {!productsLoading && !productsError && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {filtered.map((product) => (
+            {filteredProducts.map((product) => (
               <Link
                 key={product.slug}
                 to={`/product/${product.slug}`}
+                state={{from: "collection"}}
                 className="group block"
               >
                 <div className="aspect-square overflow-hidden bg-muted rounded-sm mb-3">
