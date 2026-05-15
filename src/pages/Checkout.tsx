@@ -24,8 +24,7 @@ import { useCart } from "@/context/CartContext";
 import { cn } from "@/lib/utils";
 
 const NOVA_POSHTA_API_URL = "https://api.novaposhta.ua/v2.0/json/";
-const ORDER_NOTIFICATION_EMAIL = "yurii.yehupov@gmail.com";
-const ORDER_NOTIFICATION_ENDPOINT = `https://formsubmit.co/ajax/${ORDER_NOTIFICATION_EMAIL}`;
+const ORDER_NOTIFICATION_ENDPOINT = import.meta.env.VITE_ORDER_NOTIFICATION_ENDPOINT || "/api/send-order";
 
 type NovaPoshtaApiResponse<T> = {
   success: boolean;
@@ -241,55 +240,53 @@ const Checkout = () => {
     setIsProcessing(true);
     setSubmitError("");
 
-    const orderItems = items
-      .map((item, index) => {
-        const lineTotal = item.product.price * item.quantity;
-        return `${index + 1}. ${item.product.name} (${item.product.slug}) — ${item.quantity} x ${item.product.price} ₴ = ${lineTotal} ₴`;
-      })
-      .join("\n");
-
-    const payload = new FormData();
-    payload.append("_subject", `Нове замовлення Shepit Ceramics на ${totalPrice} ₴`);
-    payload.append("_template", "table");
-    payload.append("Ім'я", form.firstName);
-    payload.append("Прізвище", form.lastName);
-    payload.append("Телефон", form.phone);
-    payload.append("Email клієнта", form.email || "Не вказано");
-    payload.append("Місто", form.city);
-    payload.append("Місто Ref", form.cityRef);
-    payload.append("Відділення", form.address);
-    payload.append("Відділення Ref", form.warehouseRef);
-    payload.append("Номер відділення", form.postalCode || "Не визначено");
-    payload.append("Коментар", form.comment || "Без коментаря");
-    payload.append("Товари", orderItems);
-    payload.append("Кількість позицій", String(items.length));
-    payload.append("Сума замовлення", `${totalPrice} ₴`);
-    payload.append("Спосіб оплати", "Оплата на картку ФОП");
-    payload.append("Спосіб доставки", "Нова пошта");
-
-    if (form.email) {
-      payload.append("_replyto", form.email);
-    }
+    const payload = {
+      customer: {
+        firstName: form.firstName,
+        lastName: form.lastName,
+        phone: form.phone,
+        email: form.email,
+        comment: form.comment,
+      },
+      delivery: {
+        method: "Нова пошта",
+        city: form.city,
+        cityRef: form.cityRef,
+        warehouse: form.address,
+        warehouseRef: form.warehouseRef,
+        warehouseNumber: form.postalCode,
+      },
+      payment: "Оплата на картку ФОП",
+      items: items.map((item) => ({
+        name: item.product.name,
+        slug: item.product.slug,
+        price: item.product.price,
+        quantity: item.quantity,
+        total: item.product.price * item.quantity,
+      })),
+      totalPrice,
+    };
 
     try {
       const response = await fetch(ORDER_NOTIFICATION_ENDPOINT, {
         method: "POST",
-        body: payload,
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(payload),
       });
 
       const result = await response.json();
 
-      if (!response.ok || result.success !== "true") {
-        throw new Error("Не вдалося надіслати замовлення на пошту.");
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Не вдалося надіслати замовлення.");
       }
 
       clearCart();
       navigate("/order-confirmation");
     } catch (error) {
-      setSubmitError(error instanceof Error ? error.message : "Не вдалося надіслати замовлення на пошту.");
+      setSubmitError(error instanceof Error ? error.message : "Не вдалося надіслати замовлення.");
     } finally {
       setIsProcessing(false);
     }
