@@ -114,7 +114,7 @@ const ProductDetail = () => {
           <meta property="og:description" content={product.description || `Керамічна прикраса ручної роботи`} />
           <meta property="og:image" content={product.image} />
           <meta property="og:type" content="product" />
-          <link rel="canonical" href={`https://shepit-ceramics.com/product/${product.slug}`} />
+          <link rel="canonical" href={`/product/${product.slug}`} />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",

@@ -22,7 +22,7 @@ const Index = () => {
         <meta property="og:title" content="Shepit Ceramics — Керамічні прикраси ручної роботи" />
         <meta property="og:description" content="Авторські керамічні прикраси ручної роботи." />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://shepit-ceramics.com/" />
+        <link rel="canonical" href="/" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />

@@ -53,7 +53,7 @@ const Collection = () => {
         <meta name="description" content="Повний каталог авторських керамічних прикрас ручної роботи: сережки, кулони, брошки та браслети. Обирайте унікальні прикраси з України." />
         <meta property="og:title" content="Колекція керамічних прикрас — Shepit Ceramics" />
         <meta property="og:description" content="Авторські керамічні прикраси ручної роботи з України." />
-        <link rel="canonical" href="https://shepit-ceramics.com/collection" />
+        <link rel="canonical" href="/collection" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />

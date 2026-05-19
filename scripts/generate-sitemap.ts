@@ -3,7 +3,7 @@ import fs from "fs";
 
 const projectId = process.env.VITE_SANITY_PROJECT_ID || "i26iy2ue";
 const dataset = process.env.VITE_SANITY_DATASET || "production";
-const baseUrl = process.env.SITE_URL || "https://shepit-ceramics.com";
+const baseUrl = process.env.SITE_URL;
 
 const client = createClient({
   projectId,
