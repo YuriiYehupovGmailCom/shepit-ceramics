@@ -39,8 +39,7 @@ export const formatOrderMessage = (order) => {
   const itemLines = items
     .map((item, index) => {
       const lineTotal = Number(item.total || 0);
-      return `${index + 1}. ${escapeHtml(item.name)} (https://shepit-ceramics.com/admin/structure/product;legacy-product-${item.slug}) 
-      - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
+      return `${index + 1}. <a href="https://shepit-ceramics.com/admin/structure/product;legacy-product-${item.slug}">${escapeHtml(item.name)}</a> - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
     })
     .join("\n");
 
@@ -48,7 +47,6 @@ export const formatOrderMessage = (order) => {
     "<b>Нове замовлення Shepit Ceramics</b>",
     "",
     `<b>Сума:</b> ${escapeHtml(order.totalPrice)} грн`,
-    `<b>Оплата:</b> ${escapeHtml(order.payment || "Оплата на картку ФОП")}`,
     "",
     "<b>Клієнт</b>",
     `Ім'я: ${escapeHtml(customer.firstName)} ${escapeHtml(customer.lastName)}`,
@@ -58,9 +56,7 @@ export const formatOrderMessage = (order) => {
     "<b>Доставка</b>",
     `Спосіб: ${escapeHtml(delivery.method || "Нова пошта")}`,
     `Місто: ${escapeHtml(delivery.city)}`,
-    `Місто Ref: ${escapeHtml(delivery.cityRef)}`,
     `Відділення: ${escapeHtml(delivery.warehouse)}`,
-    `Відділення Ref: ${escapeHtml(delivery.warehouseRef)}`,
     `Номер відділення: ${escapeHtml(delivery.warehouseNumber || "Не визначено")}`,
     "",
     "<b>Товари</b>",

@@ -8,7 +8,10 @@ export interface Category {
   order: number;
 }
 
-const categoriesQuery = `*[_type == "category"]|order(coalesce(order, 999) asc, title asc){
+const categoriesQuery = `*[
+  _type == "category" &&
+  count(*[_type == "product" && references(^._id)]) > 0
+]|order(coalesce(order, 999) asc, title asc){
   _id,
   title,
   "slug": slug.current,
