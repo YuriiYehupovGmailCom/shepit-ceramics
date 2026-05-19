@@ -39,7 +39,8 @@ export const formatOrderMessage = (order) => {
   const itemLines = items
     .map((item, index) => {
       const lineTotal = Number(item.total || 0);
-      return `${index + 1}. ${escapeHtml(item.name)} (${escapeHtml(item.slug)}) - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
+      return `${index + 1}. ${escapeHtml(item.name)} (https://shepit-ceramics.com/admin/structure/product;legacy-product-${item.slug}) 
+      - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
     })
     .join("\n");
 
