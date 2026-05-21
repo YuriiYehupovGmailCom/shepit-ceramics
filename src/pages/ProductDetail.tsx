@@ -110,11 +110,7 @@ const ProductDetail = () => {
         <Helmet>
           <title>{product.name} — Shepit Ceramics</title>
           <meta name="description" content={product.description || `${product.name} — керамічна прикраса ручної роботи`} />
-          <meta property="og:title" content={`${product.name} — Shepit Ceramics`} />
-          <meta property="og:description" content={product.description || `Керамічна прикраса ручної роботи`} />
-          <meta property="og:image" content={product.image} />
-          <meta property="og:type" content="product" />
-          <link rel="canonical" href={`/product/${product.slug}`} />
+          <link rel="canonical" href={`https://shepit-ceramics.com/product/${product.slug}`} />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
