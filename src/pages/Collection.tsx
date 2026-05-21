@@ -50,7 +50,7 @@ const Collection = () => {
     <>
       <Helmet>
         <title>Колекція керамічних прикрас — Shepit Ceramics</title>
-        <meta name="description" content="Повний каталог авторських керамічних прикрас ручної роботи: сережки, кулони, брошки та браслети. Обирайте унікальні прикраси з України." />
+        <meta name="description" content="Авторські керамічні прикраси ручної роботи. Кераміка ручної роботи. Сережки, підвіски чокери від Shepit Ceramics." />
         <link rel="canonical" href="https://shepit-ceramics.com/collection" />
       </Helmet>
       <div className="min-h-screen bg-background">
