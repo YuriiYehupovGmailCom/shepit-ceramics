@@ -3,9 +3,34 @@ type SanityProduct = {
     _updatedAt: string;
 };
 
-export async function onRequest(context: any) {
-    const sanityProjectId = "i26iy2ue";
+type PagesContext = {
+    request: Request;
+    env: {
+        VITE_SANITY_PROJECT_ID?: string;
+    };
+};
+
+function requiredEnv(env: PagesContext["env"], name: keyof PagesContext["env"]) {
+    const value = env[name];
+
+    if (!value) {
+        throw new Error(`Missing required environment variable: ${name}`);
+    }
+
+    return value;
+}
+
+export async function onRequest(context: PagesContext) {
+    let sanityProjectId: string;
     const dataset = "production";
+
+    try {
+        sanityProjectId = requiredEnv(context.env, "VITE_SANITY_PROJECT_ID");
+    } catch (error) {
+        return new Response(error instanceof Error ? error.message : "Missing sitemap configuration", {
+            status: 500,
+        });
+    }
 
     const baseUrl = new URL(context.request.url).origin;
 

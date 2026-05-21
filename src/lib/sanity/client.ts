@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import { sanityDataset, sanityProjectId } from "@/sanity/project";
+import { sanityDataset, sanityProjectId } from "@/lib/config";
 
 export const sanityClient = createClient({
   projectId: sanityProjectId,

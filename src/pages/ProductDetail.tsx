@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/CartContext";
 import { useProduct } from "@/lib/sanity/products";
+import { siteUrl } from "@/lib/config";
 
 const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -110,7 +111,7 @@ const ProductDetail = () => {
         <Helmet>
           <title>{product.name} — Shepit Ceramics</title>
           <meta name="description" content={product.description || `${product.name} — керамічна прикраса ручної роботи`} />
-          <link rel="canonical" href={`https://shepit-ceramics.com/product/${product.slug}`} />
+          <link rel="canonical" href={siteUrl(`/product/${product.slug}`)} />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",

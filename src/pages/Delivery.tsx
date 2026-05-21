@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { siteUrl } from "@/lib/config";
 
 const Delivery = () => {
   return (
@@ -9,7 +10,7 @@ const Delivery = () => {
         <Helmet>
           <title>Доставка — Shepit Ceramics</title>
           <meta name="description" content="Інформація про доставку керамічних прикрас Shepit Ceramics по Україні Новою Поштою."/>
-          <link rel="canonical" href="https://shepit-ceramics.com/delivery" />
+          <link rel="canonical" href={siteUrl("/delivery")} />
         </Helmet>
 
         <div className="min-h-screen bg-background">

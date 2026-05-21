@@ -9,6 +9,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import artisanImage from "@/assets/artisan-studio.jpg";
 import collectionImage from "@/assets/collection-flat-lay.jpg";
+import { siteUrl } from "@/lib/config";
 
 const About = () => {
   const heroRef = useScrollFadeIn();
@@ -19,7 +20,7 @@ const About = () => {
         <Helmet>
           <title>Про Shepit Ceramics — Керамічні прикраси ручної роботи</title>
           <meta name="description" content="Шепіт - це маленька майстерня, яка знаходиться у с. Малий Березний, Закарпатської області, де кожна прикраса створюється вручну."/>
-          <link rel="canonical" href="https://shepit-ceramics.com/about" />
+          <link rel="canonical" href={siteUrl("/about")} />
         </Helmet>
 
         <div className="min-h-screen bg-background">

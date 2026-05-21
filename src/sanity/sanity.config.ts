@@ -1,7 +1,7 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
-import { sanityDataset, sanityProjectId, sanityStudioTitle } from "./project";
+import { sanityDataset, sanityProjectId, sanityStudioTitle } from "../lib/config";
 import { schemaTypes } from "./schemaTypes";
 
 export default defineConfig({

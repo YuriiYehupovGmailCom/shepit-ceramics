@@ -11,6 +11,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import { useScrollFadeIn } from "@/hooks/useScrollFadeIn";
 import { useProducts } from "@/lib/sanity/products";
 import { useCategories } from "@/lib/sanity/categories";
+import { siteUrl } from "@/lib/config";
 
 const Collection = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,7 +52,7 @@ const Collection = () => {
       <Helmet>
         <title>Колекція керамічних прикрас — Shepit Ceramics</title>
         <meta name="description" content="Авторські керамічні прикраси ручної роботи. Кераміка ручної роботи. Сережки, підвіски чокери від Shepit Ceramics." />
-        <link rel="canonical" href="https://shepit-ceramics.com/collection" />
+        <link rel="canonical" href={siteUrl("/collection")} />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />

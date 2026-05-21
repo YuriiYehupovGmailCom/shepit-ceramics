@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { siteUrl } from "@/lib/config";
 import { Droplets, Sparkles, Shield, FlowerIcon, Waves } from "lucide-react";
 
 const careItems = [
@@ -47,7 +48,7 @@ const CareGuide = () => {
         <Helmet>
           <title>Догляд за керамічними прикрасами — Shepit Ceramics</title>
           <meta name="description" content="Поради з догляду за керамічними прикрасами Shepit Ceramics: як очищувати, зберігати та носити вироби ручної роботи."/>
-          <link rel="canonical" href="https://shepit-ceramics.com/care" />
+          <link rel="canonical" href={siteUrl("/care")} />
         </Helmet>
 
         <div className="min-h-screen bg-background">

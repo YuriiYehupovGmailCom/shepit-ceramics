@@ -9,9 +9,20 @@ const rootDir = path.resolve(__dirname, "..");
 const distDir = path.join(rootDir, "dist");
 const distIndexPath = path.join(distDir, "index.html");
 
-const sanityProjectId = process.env.VITE_SANITY_PROJECT_ID || "i26iy2ue";
-const sanityDataset = process.env.VITE_SANITY_DATASET || "production";
+function requiredEnv(name) {
+  const value = process.env[name];
+
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+
+  return value;
+}
+
+const sanityProjectId = requiredEnv("VITE_SANITY_PROJECT_ID");
+const sanityDataset = "production";
 const sanityApiVersion = "2025-02-19";
+const siteUrl = process.env.VITE_SITE_URL?.replace(/\/+$/, "") || "";
 
 const staticRoutes = ["/", "/collection", "/about", "/care", "/delivery"];
 const excludedRoutePatterns = [/^\/checkout(?:\/|$)/, /^\/order-confirmation(?:\/|$)/, /^\/admin(?:\/|$)/];
@@ -282,6 +293,32 @@ async function prerenderRoute(browser, origin, route) {
   }
 }
 
+async function writeRobotsTxt() {
+  const lines = [
+    "User-agent: Googlebot",
+    "Allow: /",
+    "",
+    "User-agent: Bingbot",
+    "Allow: /",
+    "",
+    "User-agent: Twitterbot",
+    "Allow: /",
+    "",
+    "User-agent: facebookexternalhit",
+    "Allow: /",
+    "",
+    "User-agent: *",
+    "Allow: /",
+  ];
+
+  if (siteUrl) {
+    lines.push("", `Sitemap: ${siteUrl}/sitemap.xml`);
+  }
+
+  await writeFile(path.join(distDir, "robots.txt"), `${lines.join("\n")}\n`);
+  console.log("Wrote dist/robots.txt");
+}
+
 async function main() {
   await stat(distIndexPath).catch(() => {
     throw new Error("dist/index.html was not found. Run vite build before prerendering.");
@@ -311,6 +348,8 @@ async function main() {
       console.log(`Prerendering ${route}`);
       await prerenderRoute(browser, server.origin, route);
     }
+
+    await writeRobotsTxt();
   } finally {
     if (browser) {
       await browser.close();

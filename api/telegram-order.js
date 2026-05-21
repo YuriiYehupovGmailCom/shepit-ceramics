@@ -31,15 +31,22 @@ const getLocalEnv = () => {
   return process.env;
 };
 
-export const formatOrderMessage = (order) => {
+const getSiteUrl = (env = getLocalEnv()) => {
+  const localEnv = getLocalEnv();
+  return (env.VITE_SITE_URL || localEnv.VITE_SITE_URL || "").replace(/\/+$/, "");
+};
+
+export const formatOrderMessage = (order, env = getLocalEnv()) => {
   const customer = order.customer || {};
   const delivery = order.delivery || {};
   const items = Array.isArray(order.items) ? order.items : [];
+  const siteUrl = getSiteUrl(env);
 
   const itemLines = items
     .map((item, index) => {
       const lineTotal = Number(item.total || 0);
-      return `${index + 1}. <a href="https://shepit-ceramics.com/admin/structure/product;legacy-product-${item.slug}">${escapeHtml(item.name)}</a> - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
+      const adminHref = `${siteUrl}/admin/structure/product;legacy-product-${item.slug}`;
+      return `${index + 1}. <a href="${escapeHtml(adminHref)}">${escapeHtml(item.name)}</a> - ${escapeHtml(item.quantity)} x ${escapeHtml(item.price)} грн = ${escapeHtml(lineTotal)} грн`;
     })
     .join("\n");
 
@@ -77,7 +84,7 @@ export const sendOrderToTelegram = async (order, env = getLocalEnv()) => {
     throw error;
   }
 
-  const text = formatOrderMessage(order);
+  const text = formatOrderMessage(order, env);
   const telegramResponse = await fetch(`${TELEGRAM_API_BASE_URL}/bot${botToken}/sendMessage`, {
     method: "POST",
     headers: {
