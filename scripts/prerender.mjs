@@ -235,6 +235,9 @@ async function prerenderRoute(browser, origin, route) {
 
   try {
     page.setDefaultTimeout(30_000);
+    await page.addInitScript(() => {
+      window.__SHEPIT_PRERENDERING__ = true;
+    });
     await installSanityRequestProxy(page);
 
     page.on("console", (message) => {

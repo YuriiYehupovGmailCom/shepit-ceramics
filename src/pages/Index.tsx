@@ -19,7 +19,7 @@ const Index = () => {
         <title>Shepit Ceramics — Керамічні прикраси ручної роботи</title>
         <meta name="keywords" content="кераміка ручної роботи, керамічні прикраси, авторська кераміка, купити сережки з кераміки, українські бренди" />
         <meta name="description" content="Авторські керамічні прикраси ручної роботи. Кераміка ручної роботи. Сережки, підвіски чокери від Shepit Ceramics." />
-        <link rel="canonical" href="https://shepit-ceramics.com/" />
+        <link rel="canonical" href="https://shepit-ceramics.com" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <Header />
