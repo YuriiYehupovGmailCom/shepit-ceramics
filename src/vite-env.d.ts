@@ -14,7 +14,7 @@ interface ImportMeta {
 }
 
 interface Window {
-  dataLayer?: unknown[][];
+  dataLayer?: Array<IArguments | unknown[]>;
   gtag?: (...args: unknown[]) => void;
   __SHEPIT_PRERENDERING__?: boolean;
 }

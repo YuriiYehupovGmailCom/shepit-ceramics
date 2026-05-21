@@ -59,8 +59,10 @@ function initializeAnalytics(id: string): Promise<void> {
   }
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args);
+  window.gtag = function gtag() {
+    // GA's official snippet pushes the Arguments object, not a rest-parameter array.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments);
   };
 
   window.gtag("js", new Date());
@@ -72,7 +74,7 @@ function initializeAnalytics(id: string): Promise<void> {
   return runWhenIdle(() => loadGtagScript(id));
 }
 
-function trackPageView(id: string, path: string) {
+function trackPageView(path: string) {
   if (!window.gtag || path === lastTrackedPath || isPrerendering()) {
     return;
   }
@@ -82,7 +84,6 @@ function trackPageView(id: string, path: string) {
     page_title: document.title,
     page_location: window.location.href,
     page_path: path,
-    send_to: id,
   });
 }
 
@@ -112,7 +113,7 @@ export default function GoogleAnalytics() {
       }
 
       animationFrameRef.current = window.requestAnimationFrame(() => {
-        trackPageView(measurementId, path);
+        trackPageView(path);
       });
     });
 
