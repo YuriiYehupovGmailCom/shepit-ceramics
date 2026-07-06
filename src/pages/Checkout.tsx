@@ -474,10 +474,7 @@ const Checkout = () => {
                       </PopoverContent>
                     </Popover>
                   </div>
-                  <div>
-                    <Label htmlFor="postalCode" className="text-sm text-foreground">Номер відділення</Label>
-                    <Input id="postalCode" value={form.postalCode} readOnly className="mt-1 rounded-sm bg-muted/40" placeholder="Буде підставлено автоматично" />
-                  </div>
+
                   {deliveryError ? (
                     <p className="text-sm text-destructive">{deliveryError}</p>
                   ) : null}
@@ -575,10 +572,6 @@ const Checkout = () => {
                 {submitError ? (
                   <p className="mt-3 text-center text-sm text-destructive">{submitError}</p>
                 ) : null}
-
-                <p className="text-xs text-muted-foreground mt-3 text-center">
-                  Оплата на картку ФОП
-                </p>
               </div>
             </div>
           </div>
